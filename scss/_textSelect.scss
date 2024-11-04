@@ -1,0 +1,14 @@
+::selection{
+  background-color: var(--primary);
+  color: var(--dark);
+}
+  
+::-moz-selection{
+  background-color: var(--primary);
+  color: var(--dark);
+}
+
+.intermission .container p::selection {
+  background-color: var(--primary-dark);
+  color: var(--white);
+}

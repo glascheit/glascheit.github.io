@@ -1,0 +1,21 @@
+// Teve que ser hard-coded, pro efeito de transparência funcionar. Desculpa por esse crime!
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 221, 254, 1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(rgba(255, 172, 253, 1), rgba(163, 86, 163, 1));
+    border-radius: 2rem;
+    &:hover {
+        background: linear-gradient(rgba(255, 172, 253, .7), rgba(163, 86, 163, .7));
+    }
+    &:active {
+        background: linear-gradient(rgba(163, 86, 163, 1), rgba(119, 45, 120, 1));
+    }
+}

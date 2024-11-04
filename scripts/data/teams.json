@@ -1,0 +1,30 @@
+[
+    {
+        "teamId": 0,
+        "teamName": "Autoral"
+    },
+    {
+        "teamId": 1,
+        "teamName": "Jacutem Sabão",
+        "teamLogo": "jacutemSabao.gif",
+        "teamHREF": "https://jacutemsabao.bitbucket.io/"
+    },
+    {
+        "teamId": 2,
+        "teamName":"Kibou Project",
+        "teamLogo": "kibouProject.gif",
+        "teamHREF": "https://discord.gg/aE7yGJz"
+    },
+    {
+        "teamId": 3,
+        "teamName": "Kibou FanDubs",
+        "teamLogo": "kibouFandubs.png",
+        "teamHREF": "https://www.youtube.com/channel/UC11b04NYN8HEMcmwu2cTe_w"
+    },
+    {
+        "teamId": 4,
+        "teamName": "Máquina de Dublagens",
+        "teamLogo": "maquinaDubs.png",
+        "teamHREF": "https://www.youtube.com/channel/UCv4TIGDlmmZD57g9R7aY3fg"
+    }
+]

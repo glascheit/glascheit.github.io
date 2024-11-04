@@ -1,0 +1,1021 @@
+@charset "UTF-8";
+:root {
+  --primary: #FFACFD;
+  --primary-light: #FFDDFE;
+  --primary-dark: #A356A3;
+  --primary-darker: #772D78;
+  --discord-bg: #7289DA;
+  --discord-green: RGBA(70, 243, 142, .8);
+  --dark: #23272A;
+  --light: #EEE;
+  --white: #FFF;
+}
+
+@font-face {
+  font-family: "Uni Sans Heavy";
+  src: url("../assets/fonts/Uni Sans Heavy.otf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Inter", sans-serif;
+  color: var(--dark);
+}
+*.unselectable {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  /*
+    Introduced in Internet Explorer 10.
+    See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+  */
+  user-select: none;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+}
+button[disabled] {
+  cursor: not-allowed;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  -webkit-user-drag: none;
+}
+
+.display-none {
+  display: none;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0px 1.5rem;
+}
+
+.bg-wrap {
+  z-index: -1;
+  background-image: url("../assets/images/components/footer/footerBg.png");
+  background-color: var(--primary);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.about-me {
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../assets/images/components/aboutMe/background.jpg);
+  background-position: 0%;
+  background-size: cover;
+}
+.about-me .container {
+  height: 100%;
+  border-bottom: 4px solid var(--light);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+}
+.about-me .container * {
+  color: var(--light);
+}
+.about-me .container img {
+  border: 1rem solid var(--light);
+  box-shadow: 0 0 2rem var(--dark);
+  animation: bounceNia 7s ease-in-out infinite;
+}
+.about-me .text-area {
+  max-width: 30%;
+}
+.about-me .text-area h1 {
+  margin-bottom: 5rem;
+}
+.about-me .text-area p {
+  font-size: 1.9rem;
+  margin-bottom: 3rem;
+}
+.about-me a {
+  font-size: 5rem;
+  position: absolute;
+  bottom: 5rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+@keyframes enterNia {
+  0% {
+    transform: translate3d(-100px, 0, 0);
+  }
+  100% {
+    transform: translate3d(100px, 0, 0);
+  }
+}
+@keyframes bounceNia {
+  0%, 100% {
+    transform: translateY(1rem);
+  }
+  50% {
+    transform: translateY(-1rem);
+  }
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(0%, 1rem); /* Starting position */
+  }
+  50% {
+    transform: translate(0%, -1rem); /* Move up */
+  }
+}
+
+.intermission {
+  z-index: 1;
+  height: 50vh;
+  width: 100%;
+  position: absolute;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+.intermission .container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.intermission .container img {
+  max-width: 30rem;
+}
+.intermission .container p {
+  color: var(--dark);
+  font-size: 3rem;
+  text-align: center;
+  max-width: 50%;
+}
+
+.intermission2 {
+  height: 30vh;
+}
+
+.voice-bank {
+  margin-top: 50vh;
+  background-color: var(--white);
+}
+.voice-bank .container {
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.voice-bank .container .characters-area, .voice-bank .container .character-expanded-area {
+  background-color: var(--light);
+  max-height: 100vh;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+.voice-bank .container .characters-area {
+  border-radius: 2rem 0 0 2rem;
+  overflow-y: auto;
+  max-width: 20%;
+  width: 100%;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.voice-bank .container .characters-area .character-info-min {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.voice-bank .container .characters-area .character-info-min img {
+  border-radius: 5rem;
+  max-width: 80%;
+  margin-bottom: 5rem;
+  transition: 0.3s all;
+}
+.voice-bank .container .characters-area .character-info-min img:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
+  cursor: pointer;
+  border: 5px solid var(--primary);
+}
+.voice-bank .container .characters-area .character-info-min img:active {
+  transform: scale(0.98);
+  opacity: 0.75;
+}
+.voice-bank .container .characters-area .character-info-min img.active {
+  border: 5px solid var(--primary);
+  transform: scale(0.98);
+  opacity: 0.75;
+}
+.voice-bank .container .characters-area .character-info-min:first-of-type img {
+  margin-top: 7rem;
+}
+.voice-bank .container .character-expanded-area {
+  border-radius: 0 2rem 2rem 0;
+  max-width: 80%;
+  width: 100%;
+  padding: 2rem;
+  height: 100vh;
+  opacity: 0;
+  transform: translateX(50vw);
+  transition: opacity 1s ease, transform 1s ease, background-color 1s ease; /* Transition for smooth effect */
+}
+.voice-bank .container .character-expanded-area .container {
+  overflow: auto;
+  margin-top: 3rem;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease, background-color 1s ease; /* Transition for smooth effect */
+  height: 100%;
+  background-color: var(--light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .center {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .center a {
+  transition: 0.2s all;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .center a:hover {
+  transform: scale(1.01);
+  opacity: 0.8;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .center a:active {
+  transform: scale(0.98);
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .center img {
+  transition: opacity 1s ease-in-out; /* Adiciona a transição de opacidade */
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-img-container {
+  width: 22rem;
+  height: 22rem;
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-img-container img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-name-area, .voice-bank .container .character-expanded-area .container .character .character-info .character-team-area a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-name-area h2, .voice-bank .container .character-expanded-area .container .character .character-info .character-team-area a h2 {
+  margin-right: 2rem;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-name-area {
+  margin: 2rem 0;
+  align-items: center;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-name-area h2, .voice-bank .container .character-expanded-area .container .character .character-info .character-name-area em {
+  text-align: center;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-name-area h2 {
+  font-size: 4rem;
+  transition: 1s color;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-name-area em b {
+  font-size: 3rem;
+  transition: 1s color;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-series-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-series-area h3 {
+  margin-right: 1rem;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-series-area h3, .voice-bank .container .character-expanded-area .container .character .character-info .character-series-area a {
+  transition: color 1s ease;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-series-area a {
+  transition: 0.2s all;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-series-area a span {
+  transition: 1s color;
+  font-size: 2.4rem;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-series-area a:hover {
+  transform: scale(1.01);
+  opacity: 0.8;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-series-area a:active {
+  transform: scale(0.98);
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-team-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-team-area h3 {
+  transition: color 1s ease;
+  font-size: 2.1rem;
+  margin-bottom: 1.5rem;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-team-area .team-area a {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+  transition: 0.2s all;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-team-area .team-area a span {
+  font-size: 2.3rem;
+  transition: color 1s ease;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-team-area .team-area a:hover {
+  transform: scale(1.02);
+  opacity: 0.8;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-team-area .team-area a:active {
+  transform: scale(0.98);
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-team-area .team-area a img {
+  width: 100%;
+  max-width: 5.5rem;
+  border-radius: 50%;
+  margin-right: 2rem;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-year-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-year-area h3, .voice-bank .container .character-expanded-area .container .character .character-info .character-year-area span {
+  font-size: 2rem;
+  transition: color 1s ease;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-year-area span {
+  margin-bottom: 2rem;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-bio-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-bio-area p {
+  font-size: 1.9rem;
+  text-align: center;
+  max-width: 90%;
+  line-height: 1.5;
+  transition: color 1s ease;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-audio-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-audio-area #character-audio-button i {
+  color: inherit; /* This would cause the icon to inherit the color from the button */
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-audio-area h3 {
+  font-size: 2.5rem;
+  transition: color 1s ease;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-audio-area button {
+  color: var(--primary-darker);
+  font-size: 2rem;
+  transition: 0.2s all ease;
+  margin: 2rem 0;
+  background-color: var(--primary);
+  font-weight: bold;
+  padding: 2rem;
+  border-radius: 2rem;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-audio-area button i {
+  margin-left: 0.5rem;
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-audio-area button:hover {
+  background-color: var(--primary-darker);
+  transform: scale(1.02);
+  opacity: 0.9;
+  border: 3px solid var(--primary);
+  color: var(--primary);
+}
+.voice-bank .container .character-expanded-area .container .character .character-info .character-audio-area button:active {
+  transform: scale(0.95);
+}
+
+.discord {
+  background-color: var(--discord-bg);
+  border-radius: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  max-width: 50%;
+  padding: 2rem;
+  transition: 0.2s all;
+}
+.discord .image-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.discord .image-area img {
+  max-width: 80%;
+  border: 0.5rem solid var(--discord-green);
+  padding: 0.5rem;
+  margin-right: 5rem;
+  border-radius: 50%;
+}
+.discord .text-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.discord .text-area .discord-cta {
+  text-align: center;
+  color: var(--light);
+  font-family: "Uni Sans Heavy", sans-serif;
+  font-size: 3rem;
+}
+.discord .text-area .discord-brand {
+  font-size: 6.6rem;
+}
+.discord:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
+  cursor: pointer;
+}
+@keyframes rotateAnimation {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+.discord:active {
+  transform: scale(0.98);
+}
+
+h1 {
+  font-size: 10rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+.lobster {
+  font-family: "Lobster", sans-serif;
+}
+.lobster em, .lobster b, .lobster strong, .lobster mark, .lobster small, .lobster del, .lobster ins, .lobster sub, .lobster sup {
+  font-family: "Lobster", sans-serif;
+}
+
+.alexandria {
+  font-family: "Alexandria", sans-serif;
+}
+.alexandria em, .alexandria b, .alexandria strong, .alexandria mark, .alexandria small, .alexandria del, .alexandria ins, .alexandria sub, .alexandria sup {
+  font-family: "Alexandria", sans-serif;
+  color: inherit;
+}
+
+nav {
+  height: 8vh;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+}
+nav .nav-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-dark);
+  box-shadow: 0rem 0.3rem 0.3rem;
+  border-radius: 0 0 5rem 5rem;
+  height: 100%;
+}
+nav .nav-bar .container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+nav .nav-bar .container p {
+  font-size: 4rem;
+  color: var(--light);
+  transition: 0.2s all;
+}
+nav .nav-bar .container p:hover {
+  color: var(--primary);
+  transform: scale(1.02);
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+nav ul a.margin-right {
+  margin-right: 2rem;
+}
+nav ul li, nav ul i {
+  color: var(--light);
+}
+nav ul i {
+  font-size: 2.5rem;
+  margin-left: 1rem;
+}
+nav ul .big-screen {
+  display: block;
+}
+nav ul .small-screen {
+  display: none;
+}
+nav ul li {
+  font-size: 2.5rem;
+  padding: 2rem;
+  transition: transform 0.5s, color 0.5s, background-color 0.5s;
+}
+nav ul li:hover {
+  color: var(--primary);
+  background-color: var(--primary-darker);
+  cursor: pointer;
+  transform: scale(1.03);
+  font-weight: 500;
+}
+nav ul li:hover i {
+  color: var(--primary);
+}
+nav ul li::before {
+  position: absolute;
+  content: "";
+  top: 0.7rem;
+  left: 0;
+  width: 100%;
+  height: 0.3rem;
+  border-radius: 1rem;
+  background-color: currentColor;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: all 0.5s;
+  opacity: 0.5;
+}
+nav ul li:hover::before {
+  transform: scaleX(1);
+}
+nav ul li::after {
+  position: absolute;
+  content: "";
+  bottom: 0.7rem;
+  right: 0;
+  width: 100%;
+  border-radius: 0.75rem;
+  height: 0.3rem;
+  background-color: currentColor;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: all 0.5s;
+  opacity: 0.5;
+}
+nav ul li:hover::after {
+  transform: scaleX(1);
+}
+
+footer {
+  -webkit-user-drag: none;
+  background-color: var(--primary);
+  margin-top: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../assets/images/components/footer/footerBg.png");
+}
+footer .container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+footer .discord {
+  margin-top: 4rem;
+}
+footer .discord {
+  margin-bottom: 4rem;
+}
+footer b {
+  font-size: 1.8rem;
+  opacity: 0.8;
+  margin-bottom: 4rem;
+}
+footer b:first-of-type {
+  font-size: 2rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+footer a, footer span:not(#copyright-year) {
+  transition: 0.2s all;
+}
+footer a:hover, footer span:not(#copyright-year):hover {
+  text-decoration: underline;
+  opacity: 0.75;
+  font-size: 1.9rem;
+}
+footer a:active, footer span:not(#copyright-year):active {
+  font-size: 1.7rem;
+}
+footer #hello-kitty {
+  width: 17.75rem;
+  margin-bottom: 4rem;
+}
+
+@media only screen and (max-width: 1880px) {
+  .voice-bank .container .character-expanded-area .container .character .character-info .center a .character-img-container {
+    width: 18rem;
+    height: 18rem;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .center a .character-img-container img {
+    width: 50%;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .center a .character-name-area h2 {
+    font-size: 3rem;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .center a .character-name-area em b {
+    font-size: 2.5rem;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .character-series-area h3 {
+    font-size: 2rem;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .character-series-area span {
+    font-size: 2rem;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .character-team-area .team-area a img {
+    max-width: 4.5rem;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .character-bio-area p {
+    font-size: 1.5rem;
+    margin: 2rem 0;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .character-audio-area h3 {
+    font-size: 2rem;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .character-audio-area button {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 1396px) {
+  .intermission .container p {
+    max-width: 60%;
+  }
+}
+@media screen and (max-width: 1350px) {
+  .about-me .container .text-area h1 {
+    font-size: 8rem;
+  }
+  .about-me .container .text-area p {
+    font-size: 1.5rem;
+  }
+  footer .container {
+    width: 100%;
+  }
+  footer .container .discord {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1169px) {
+  .intermission .container p {
+    max-width: 70%;
+  }
+}
+@media screen and (max-width: 1105px) {
+  .about-me .container .about-me-image-area img#nia-teppelin {
+    max-width: 80%;
+  }
+  .about-me .container .text-area {
+    max-width: 50%;
+  }
+  .about-me .container .text-area h1 {
+    font-size: 8rem;
+  }
+  .about-me .container .text-area p {
+    font-size: 1.5rem;
+  }
+  nav .nav-bar .container {
+    justify-content: center;
+  }
+  nav .nav-bar .container a p {
+    display: none;
+  }
+  nav .nav-bar .container ul {
+    gap: 0;
+  }
+}
+@media screen and (max-width: 1007px) {
+  .intermission .container p {
+    max-width: 80%;
+  }
+}
+@media screen and (max-width: 950px) {
+  nav {
+    height: 10vh;
+    position: static;
+  }
+  nav .nav-bar {
+    border-radius: 0;
+  }
+  .about-me {
+    height: auto;
+  }
+  .about-me .container {
+    flex-direction: column;
+  }
+  .about-me .container a {
+    position: static;
+    margin-bottom: 3rem;
+    font-size: 3.5rem;
+  }
+  .about-me .container .about-me-image-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    margin-top: 5vh;
+  }
+  .about-me .container .text-area {
+    text-align: center;
+    margin-top: 3rem;
+    max-width: 100%;
+  }
+  .about-me .container .text-area h1 {
+    margin-bottom: 3rem;
+  }
+  .about-me .container .text-area p {
+    font-size: 1.7rem;
+  }
+  .voice-bank .container {
+    flex-direction: column;
+  }
+  .voice-bank .container .characters-area {
+    padding: 2rem;
+    flex-direction: row;
+    max-width: 100%;
+  }
+  .voice-bank .container .characters-area .character-info-min:not(:last-of-type) img {
+    margin-right: 6rem;
+  }
+  .voice-bank .container .characters-area .character-info-min img {
+    margin-bottom: 0;
+    max-width: 13rem;
+  }
+  .voice-bank .container .characters-area .character-info-min:first-of-type img {
+    margin-top: 0;
+  }
+  .voice-bank .container .character-expanded-area {
+    max-width: 100%;
+    padding: 0;
+  }
+  .voice-bank .container .character-expanded-area .container {
+    width: 100%;
+  }
+  .voice-bank .container .character-expanded-area .container .character {
+    height: 100%;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .center a .character-img-container {
+    width: 15rem;
+    height: 15rem;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .center a .character-name-area {
+    flex-direction: column;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .center a .character-name-area h2 {
+    font-size: 2.7rem;
+    margin-right: 0;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .center a .character-name-area em b {
+    font-size: 1.7rem;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .character-series-area {
+    flex-direction: column;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .character-series-area h3 {
+    font-size: 2rem;
+    margin-right: 0;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .character-series-area a span {
+    font-size: 2rem;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .character-team-area h3 {
+    font-size: 2rem;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .character-team-area .team-area a img {
+    margin-right: 1.5rem;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .character-team-area .team-area a span {
+    font-size: 2rem;
+  }
+  .voice-bank .container .character-expanded-area .container .character .character-info .character-audio-area button {
+    margin-bottom: 5rem;
+  }
+  footer .container .discord .image-area {
+    max-width: 35%;
+  }
+  footer .container .discord .image-area img {
+    margin-right: 3rem;
+  }
+  footer .container .discord .text-area .discord-cta {
+    font-size: 2.5rem;
+  }
+  footer .container .discord .text-area .discord-brand {
+    font-size: 5.5rem;
+  }
+}
+@media screen and (max-width: 936px) {
+  nav .nav-bar ul li, nav .nav-bar ul li i {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 876px) {
+  .intermission .container p {
+    max-width: 90%;
+  }
+}
+@media screen and (max-width: 826px) {
+  nav .nav-bar ul li, nav .nav-bar ul li i {
+    font-size: 2.3rem;
+  }
+}
+@media screen and (max-width: 783px) {
+  .intermission .container p {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 778px) {
+  nav .nav-bar ul li, nav .nav-bar ul li i {
+    font-size: 2.2rem;
+  }
+}
+@media screen and (max-width: 754px) {
+  nav .nav-bar ul li, nav .nav-bar ul li i {
+    font-size: 2.1rem;
+  }
+}
+@media screen and (max-width: 750px) {
+  nav .nav-bar ul li > i {
+    display: none;
+  }
+  footer .container .discord {
+    max-width: 100%;
+  }
+  footer .container .discord .text-area .discord-cta {
+    font-size: 3.5rem;
+  }
+  footer .container .discord .text-area .discord-brand {
+    font-size: 7.5rem;
+  }
+}
+@media screen and (max-width: 714px) {
+  .intermission .container p {
+    font-size: 2.5rem;
+  }
+}
+@media screen and (max-width: 601px) {
+  .intermission .container p {
+    font-size: 2rem;
+  }
+  .intermission .container img {
+    max-width: 80%;
+  }
+}
+@media screen and (max-width: 538px) {
+  footer .container .discord {
+    max-width: 100%;
+  }
+  footer .container .discord .text-area .discord-cta {
+    font-size: 2.5rem;
+  }
+  footer .container .discord .text-area .discord-brand {
+    font-size: 5.5rem;
+  }
+}
+@media screen and (max-width: 581px) {
+  nav .nav-bar .container ul .margin-right {
+    margin-right: 0;
+  }
+  nav .nav-bar .container ul .big-screen {
+    display: none;
+  }
+  nav .nav-bar .container ul .small-screen {
+    display: block;
+  }
+}
+@media screen and (max-width: 450px) {
+  footer .container .discord {
+    max-width: 100%;
+  }
+  footer .container .discord .text-area .discord-cta {
+    font-size: 2rem;
+  }
+  footer .container .discord .text-area .discord-brand {
+    font-size: 4.5rem;
+  }
+  footer .container img#hello-kitty {
+    width: 40%;
+  }
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(255, 221, 254);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(rgb(255, 172, 253), rgb(163, 86, 163));
+  border-radius: 2rem;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(rgba(255, 172, 253, 0.7), rgba(163, 86, 163, 0.7));
+}
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(rgb(163, 86, 163), rgb(119, 45, 120));
+}
+
+::-moz-selection {
+  background-color: var(--primary);
+  color: var(--dark);
+}
+
+::selection {
+  background-color: var(--primary);
+  color: var(--dark);
+}
+
+::-moz-selection {
+  background-color: var(--primary);
+  color: var(--dark);
+}
+
+.intermission .container p::-moz-selection {
+  background-color: var(--primary-dark);
+  color: var(--white);
+}
+
+.intermission .container p::selection {
+  background-color: var(--primary-dark);
+  color: var(--white);
+}/*# sourceMappingURL=main.css.map */

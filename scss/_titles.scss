@@ -1,0 +1,22 @@
+h1 {
+    font-size: 10rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+.lobster {
+    font-family: "Lobster", sans-serif;
+    em, b, strong, mark, small, del, ins, sub, sup {
+        font-family: "Lobster", sans-serif;
+    }
+}
+
+.alexandria {
+    font-family: "Alexandria", sans-serif;
+    em, b, strong, mark, small, del, ins, sub, sup {
+        font-family: "Alexandria", sans-serif;
+        color: inherit;
+    }
+}

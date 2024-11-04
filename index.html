@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="./styles/main.css">
+    <link id="favicon" rel="shortcut icon" type="image/png" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&family=Lobster&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Primary Meta Tags -->
+    <title>Banco de Voz - Glascheit ❀</title>
+    <meta name="title" content="Banco de Vozes - Glascheit ❀" />
+    <meta name="description" content="Um catálogo virtual das personagens que já dublei." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://glascheit.github.io/" />
+    <meta property="og:title" content="Banco de Voz - Glascheit ❀" />
+    <meta property="og:description" content="Um catálogo virtual das personagens que já dublei." />
+    <meta property="og:image" content="https://glascheit.github.io/assets/images/meta.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://glascheit.github.io/" />
+    <meta property="twitter:title" content="Banco de Vozes - Glascheit ❀" />
+    <meta property="twitter:description" content="Um catálogo virtual das personagens que já dublei." />
+    <meta property="twitter:image" content="https://glascheit.github.io/assets/images/meta.png" />
+</head>
+<body>
+    <div class="bg-wrap">
+    </div>
+    <nav>
+        <div class="nav-bar">
+            <div class="container">
+                <a href="#"><p class="lobster" id="username-navbar">Glascheit</p></a>
+                <ul>
+                    <a href="#about-me" class="margin-right"><li class="alexandria big-screen">Sobre Mim <i class="fa-solid fa-user"></i></li></a>
+                    <a href="#voice-bank" class="margin-right"><li class="alexandria big-screen">Banco de Vozes <i class="fa-solid fa-headphones"></i></li></a>
+                    <a href="#about-me"><li class="alexandria small-screen">Sobre <i class="fa-solid fa-user"></i></li></a>
+                    <a href="#voice-bank"><li class="alexandria small-screen">Banco<i class="fa-solid fa-headphones"></i></li></a>
+                    <a href="#footer"><li class="alexandria">Contato <i class="fa-solid fa-phone-volume"></i></li></a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="about-me" id="about-me">
+        <div class="container">
+            <div class="about-me-image-area">
+                <img src="./assets/images/components/aboutMe/NiaTeppelin.png" id="nia-teppelin" alt="Nia Teppelin" data-aos="fade-right">
+            </div>
+            <div class="text-area" data-aos="fade-left">
+                <h1 class="lobster">Olá!</h1>
+                <p class="alexandria">Me chamo <b id="username-about-me">Glascheit</b> e sou <b>fã-dubladora!</b></p>
+                <p class="alexandria">Sou apaixonada por dublagem desde criança, mas só fui interagir diretamente com esse mundo em <b>2020</b>!</p>
+                <p class="alexandria">Embora eu duble principalmente por <b>amor</b> e por <b>diversão</b>, levo esse "passatempo" com muita <b>seriedade</b>!</p>
+                <p class="alexandria">Atualmente eu busco cursos e aulas de Teatro para, um dia, poder enfim dizer que sou uma "<b>dubladora profissional</b>".</p>
+            </div>
+            <a href="#intermission"><i class="fa-solid fa-down-long" data-aos="fade-down" data-aos-offset="0"></i></a>
+        </div>
+    </div>
+    <div class="intermission" id="intermission">
+        <div class="container">
+            <p class="alexandria" data-aos="fade-up">Aqui, você pode ouvir amostras de áudios das personagens que eu já dublei.</p>
+            <img src="./assets/images/components/intermission/waves.gif" alt="Ondas Sonoras" data-aos="fade-up">
+        </div>
+    </div>
+    <div class="voice-bank" id="voice-bank">
+        <div class="container">
+            <div class="characters-area" id="characters-area">
+            </div>
+            <div class="character-expanded-area display-none" id="character-expanded-area">
+                <div class="container" id="character-expanded-area-container">
+                    <div class="character">
+                        <div class="character-info">
+                            <div class="center">
+                                <a href="" target="_blank" id="character-link">
+                                    <div class="character-img-container">
+                                        <img id="character-img" src="" alt="Imagem de Personagem">
+                                    </div>
+                                    <div class="character-name-area">
+                                        <h2 id="character-name" class="alexandria">Nome da Personagem</h2>
+                                        <em><b id="character-japanese-name" class="alexandria"></b></em>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="character-series-area">
+                                <h3 class="alexandria" id="character-series-indicator">Série:</h3>
+                                <a href="" id="character-series-link" target="_blank"><span id="character-series" class="alexandria"></span></a>
+                            </div>
+                            <div class="character-team-area">
+                                <h3 class="alexandria" id="character-team-indicator">Equipe:</h3>
+                                <div class="team-area">
+                                    <a href="" id="character-team-link" target="_blank">
+                                        <img src="" alt="Equipe com a Personagem" id="character-team-logo">
+                                        <span id="character-team-name" class="alexandria">Equipe com a Personagem</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="character-year-area">
+                                <h3 id="character-year-indicator">Ano de gravação:</h3>
+                                <span id="character-year" class="alexandria"></span>
+                            </div>
+                            <div class="character-bio-area">
+                                <p id="character-bio" class="alexandria">Bio da Personagem</p>
+                            </div>
+                            <div class="character-audio-area">
+                                <h3 class="alexandria" id="character-audio-indicator">Áudios:</h3>
+                                <button class="alexandria unselectable" id="character-audio-button">Tocar áudio 1 <i class="fa-solid fa-music" id="character-audio-button-icon"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="intermission intermission2">
+        <div class="container">
+            <p class="alexandria" data-aos="fade-up">Obrigada pela atenção!<br>♡⸜(˶˃ ᵕ ˂˶)⸝♡</p>
+        </div>
+    </div>
+    <footer id="footer">
+        <div class="container">
+            <div class="discord">
+                <div class="image-area">
+                    <img src="./assets/images/components/discordComponent/discordLogo.png" id="discord_pfp" alt="Foto de Perfil do Discord" class="unselectable">
+                </div>
+                <div class="text-area">
+                    <h2 class="discord-cta unselectable">
+                        Fale comigo pelo
+                    </h2>
+                    <h2 class="discord-cta discord-brand unselectable">
+                        Discord
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <b class="unselectable"><span id="copyright-year">2024</span></b>
+        <img src="./assets/images/components/footer/helloKitty.gif" alt="Hello Kitty" class="unselectable" id="hello-kitty">
+    </footer>
+    <script src="./scripts/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'Inter', sans-serif;
+    color: var(--dark);
+    &.unselectable {
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+         
+            /*
+              Introduced in Internet Explorer 10.
+              See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+            */
+            -ms-user-select: none;
+            user-select: none;
+    }
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+button {
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+
+    &[disabled] {
+        cursor: not-allowed;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+  -webkit-user-drag: none;
+}
+
+.display-none {
+    display: none;
+}

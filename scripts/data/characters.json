@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Lain_Iwakura",
+        "series": "Serial Experiments Lain",
+        "teamId": 1,
+        "year": 2024,
+        "bio": "De todas as que fiz até hoje, Lain é a que eu menos tenho \"aquela\" conexão, já que é a mais recente!\nConsigo me identificar com sua descrição, além de ser legal poder enfim fazer uma voz mais tranquila depois de tanto tempo.\nNunca houve um teste em que desejei <b>tanto</b> passar... e agora finalmente estou aqui!\nNão quero que se arrependam da escolha que fizeram!",
+        "isJaponice": true,
+        "textColor": "#8EB7EC",
+        "backgroundColor": "#202038",
+        "qtdAudios": 1
+    },
+    {
+        "name": "Emu_Otori",
+        "series": "Project SEKAI",
+        "teamId": 0,
+        "year": 2024,
+        "bio": "Muito animada e ingênua, Emu é uma personagem extremamente impulsiva!\nEla quer ver todos sorrindo, e isso é algo com que posso me identificar.\nSério, fazer ela foi tudo de bom!\nPersonagens assim são sempre muito complicadas de fazer, mas é com elas que sinto que posso \"soltar a minha voz\" da maneira certa.",
+        "isJaponice": true,
+        "textColor": "var(--primary)",
+        "backgroundColor": "#582159",
+        "qtdAudios": 1
+    },
+    {
+        "name": "Kasumi_Yoshizawa",
+        "series": "Persona",
+        "teamId": 3,
+        "year": 2021,
+        "bio": "\"Elegante\" e \"adorável\" são adjetivos perfeitos para descrevê-la. Em geral, tenho muito carinho pela personagem e me diverti muito enquanto dublava!\nGravar a Kasumi sempre me deixou com aquele gostinho de \"quero mais\".\nFoi graças a ela que, hoje, busco me conectar mais com a franquia <em>Persona</em>.\nEspero um dia ter mais e mais cenas em que ela apareça.",
+        "isJaponice": true,
+        "textColor": "#E9CB83",
+        "backgroundColor": "#81132A",
+        "qtdAudios": 1
+    },
+    {
+        "name": "Hiyoko_Saionji",
+        "series": "Danganronpa",
+        "teamId": 2,
+        "year": 2018,
+        "bio": "Por parecer infantil, ela passa inocência, mas não demora muito para revelar suas garras!\nDublar a Hiyoko foi um evento divertido e memorável, embora fosse muito difícil gravar seus xingamentos constantes!\nA parte que mais adorei foi poder insultar os personagens que mais detestava enquanto a interpretava.",
+        "isJaponice": true,
+        "textColor": "#F9EEA9",
+        "backgroundColor": "#925D45",
+        "qtdAudios": 1
+    },
+    {
+        "name": "Princesa",
+        "series": "My First Love",
+        "teamId": 4,
+        "year": 2024,
+        "bio": "A \"Princesa\" foi o primeiro amor de alguém.\nInterpretá-la foi divertido, principalmente a parte em que tive que mudar um pouco a minha voz para as diferentes linhas do tempo!\nSer chamada pelo Máquina de Dublagens e ter sua confiança depositada em mim foi uma honra enorme.\nEsse convite me animou e me motivou a dar o dobro do meu melhor!",
+        "isJaponice": false,
+        "textColor": "#FF90C8",
+        "backgroundColor": "#315531",
+        "characterPicture": "princesa.png",
+        "qtdAudios": 1
+    }
+]

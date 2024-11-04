@@ -1,0 +1,466 @@
+@media only screen and (max-width: 1880px) {
+    .voice-bank {
+        .container {
+            .character-expanded-area {
+                .container {
+                    .character {
+                        .character-info {
+                            .center a {
+                                .character-img-container {
+                                    width: 18rem;
+                                    height: 18rem;
+                                    img {
+                                        width: 50%;
+                                    }
+                                }
+                                .character-name-area {
+                                    h2 {
+                                        font-size: 3rem;
+                                    }
+                                    em b {
+                                        font-size: 2.5rem;
+                                    }
+                                }
+                            }
+                            .character-series-area {
+                                h3 {
+                                    font-size: 2rem;
+                                } span {
+                                    font-size: 2rem;
+                                }
+                            }
+                            .character-team-area {
+                                .team-area a {
+                                    img {
+                                        max-width: 4.5rem;
+                                    }
+                                }
+                            }
+                            .character-bio-area p {
+                                font-size: 1.5rem;
+                                margin: 2rem 0;
+                            }
+                            .character-audio-area {
+                                h3 {
+                                    font-size: 2rem;
+                                } button {
+                                    font-size: 1.5rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1396px) {
+    .intermission {
+        .container {
+            p {
+                max-width: 60%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    .about-me {
+        .container {
+            .text-area {
+                h1 {
+                    font-size: 8rem;
+                }
+                p {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+    footer {
+        .container {
+            width: 100%;
+            .discord {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1169px) {
+    .intermission {
+        .container {
+            p {
+                max-width: 70%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1105px) {
+    .about-me {
+        .container {
+            .about-me-image-area {
+                img#nia-teppelin {
+                    max-width: 80%;
+                }
+            }
+            .text-area {
+                max-width: 50%;
+                h1 {
+                    font-size: 8rem;
+                }
+                p {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+    nav {
+        .nav-bar {
+            .container {
+                justify-content: center;
+                a {
+                    p {
+                        display: none;
+                    }
+                }
+                ul {
+                    gap: 0;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1007px) {
+    .intermission {
+        .container {
+            p {
+                max-width: 80%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 950px) {
+    nav {
+        height: 10vh;
+        position: static;
+        .nav-bar {
+            border-radius: 0;
+        }
+    }
+    .about-me {
+        height: auto;
+        .container {
+            a {
+                position: static;
+                margin-bottom: 3rem;
+                font-size: 3.5rem;
+            }
+            flex-direction: column;
+            .about-me-image-area {
+                @include directionAlignJustify(row, center, center);
+                height: auto;
+                margin-top: 5vh;
+            }
+            .text-area {
+                text-align: center;
+                margin-top: 3rem;
+                max-width: 100%;
+                h1 {
+                    margin-bottom: 3rem;
+                }
+                p {
+                    font-size: 1.7rem;
+                }
+            }
+        }
+    }
+    .voice-bank {
+        .container {
+            flex-direction: column;
+            .characters-area {
+                padding: 2rem;
+                flex-direction: row;
+                max-width: 100%;
+                .character-info-min {
+                    &:not(:last-of-type) {
+                        img {
+                            margin-right: 6rem;
+                        }
+                    }
+                    img {
+                        margin-bottom: 0;
+                        max-width: 13rem;
+                    }
+                    &:first-of-type {
+                        img {
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+            .character-expanded-area {
+                max-width: 100%;
+                padding: 0;
+                .container {
+                    width: 100%;
+                    .character {
+                        height: 100%;
+                        .character-info {
+                            .center {
+                                a {
+                                    .character-img-container {
+                                        width: 15rem;
+                                        height: 15rem;
+                                    }
+                                    .character-name-area {
+                                        h2 {
+                                            font-size: 2.7rem;
+                                            margin-right: 0;
+                                        }
+                                        em b {
+                                            font-size: 1.7rem;
+                                        }
+                                        flex-direction: column;
+                                    }
+                                }
+                            }
+                            .character-series-area {
+                                flex-direction: column;
+                                h3 {
+                                    font-size: 2rem;
+                                    margin-right: 0;
+                                }
+                                a span {
+                                    font-size: 2rem;
+                                }
+                            }
+                            .character-team-area {
+                                h3 {
+                                    font-size: 2rem;
+                                }
+                                .team-area {
+                                    a {
+                                        img {
+                                            margin-right: 1.5rem;
+                                        }
+                                        span {
+                                            font-size: 2rem;
+                                        }
+                                    }
+                                }
+                            }
+                            .character-audio-area {
+                                button {
+                                    margin-bottom: 5rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        .container {
+            .discord {
+                .image-area {
+                    max-width: 35%;
+                    img {
+                        margin-right: 3rem;
+                    }
+                }
+                .text-area {
+                    .discord-cta {
+                        font-size: 2.5rem;
+                    }
+                    .discord-brand {
+                        font-size: 5.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 936px) {
+    nav {
+        .nav-bar {
+            ul {
+                li, li i {
+                    font-size: 2.5rem;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 876px) {
+    .intermission {
+        .container {
+            p {
+                max-width: 90%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 826px) {
+    nav {
+        .nav-bar {
+            ul {
+                li, li i {
+                    font-size: 2.3rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 783px) {
+    .intermission {
+        .container {
+            p {
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 778px) {
+    nav {
+        .nav-bar {
+            ul {
+                li, li i {
+                    font-size: 2.2rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 754px) {
+    nav {
+        .nav-bar {
+            ul {
+                li, li i {
+                    font-size: 2.1rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 750px) {
+    nav {
+        .nav-bar {
+            ul {
+                li > i {
+                    display: none;
+                }
+            }
+        }
+    }
+    footer {
+        .container {
+            .discord {
+                max-width: 100%;
+                .text-area {
+                    .discord-cta {
+                        font-size: 3.5rem;
+                    }
+                    .discord-brand {
+                        font-size: 7.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 714px) {
+    .intermission {
+        .container {
+            p {
+                font-size: 2.5rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 601px) {
+    .intermission {
+        .container {
+            p {
+                font-size: 2rem;
+            }
+            img {
+                max-width: 80%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 538px) {
+    footer {
+        .container {
+            .discord {
+                max-width: 100%;
+                .text-area {
+                    .discord-cta {
+                        font-size: 2.5rem;
+                    }
+                    .discord-brand {
+                        font-size: 5.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 581px) {
+    nav {
+        .nav-bar {
+            .container {
+                ul {
+                    .margin-right {
+                        margin-right: 0;
+                    }
+                    .big-screen {
+                        display: none;
+                    }
+                    .small-screen {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    footer {
+        .container {
+            .discord {
+                max-width: 100%;
+                .text-area {
+                    .discord-cta {
+                        font-size: 2rem;
+                    }
+                    .discord-brand {
+                        font-size: 4.5rem;
+                    }
+                }
+            }
+            img#hello-kitty {
+                width: 40%;
+            }
+        }
+    }
+}

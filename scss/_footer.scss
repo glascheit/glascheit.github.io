@@ -1,0 +1,47 @@
+footer {
+    -webkit-user-drag: none;
+    background-color: var(--primary);
+    margin-top: 30vh;
+    @include directionAlignJustify(column, center, center);
+    
+    background-image: url("../assets/images/components/footer/footerBg.png");
+
+    .container {
+        @include directionAlignJustify(row, center, center);
+    }
+
+    .discord {
+        margin-top: 4rem;
+    }
+
+    .discord {
+        margin-bottom: 4rem;
+    }
+    
+    b {
+        font-size: 1.8rem;
+        opacity: .8;
+        margin-bottom: 4rem;
+    }
+    
+    b:first-of-type {
+        font-size: 2rem;
+        opacity: .9;
+        margin-bottom: 2rem;
+    }
+
+    a, span:not(#copyright-year) {
+        transition: .2s all;
+        &:hover {
+            text-decoration: underline;
+            opacity: .75;
+            font-size: 1.9rem;
+        } &:active {
+            font-size: 1.7rem;
+        }
+    }
+    #hello-kitty {
+        width: 17.75rem;
+        margin-bottom: 4rem;
+    }
+}

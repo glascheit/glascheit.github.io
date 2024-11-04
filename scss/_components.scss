@@ -1,0 +1,408 @@
+.bg-wrap {
+    z-index: -1;
+    background-image: url("../assets/images/components/footer/footerBg.png");
+    background-color: var(--primary);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.about-me {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)  ), url(../assets/images/components/aboutMe/background.jpg);
+    background-position: 0%;
+    background-size: cover;
+
+    .container {
+        height: 100%;
+        border-bottom: 4px solid var(--light);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        overflow: hidden;
+        * {
+            color: var(--light);
+        }
+
+        img {
+            border: 1rem solid var(--light);
+            box-shadow: 0 0 2rem var(--dark);
+            animation: bounceNia 7s ease-in-out infinite;
+        }
+    }
+    .text-area {
+        max-width: 30%;
+        h1 {
+            margin-bottom: 5rem;
+        }
+        p {
+            font-size: 1.9rem;
+            margin-bottom: 3rem;
+        }
+    }
+    a {
+        font-size: 5rem;
+        position: absolute;
+        bottom: 5rem;
+        animation: bounce 2s ease-in-out infinite;
+    }
+    
+    @keyframes enterNia {
+        0% {
+            transform: translate3d(-100px,0,0);
+        }
+        100% {
+            transform: translate3d(100px,0,0);
+        }
+    }
+
+    @keyframes bounceNia {
+        0%, 100% {
+            transform: translateY(1rem);
+        }
+        50% {
+            transform: translateY(-1rem);
+        }
+    }
+
+    @keyframes bounce {
+        0%, 100% {
+            transform: translate(-0%, 1rem); /* Starting position */
+        }
+        50% {
+            transform: translate(-0%, -1rem); /* Move up */
+        }
+    }
+}
+
+.intermission {
+    z-index: 1;
+    height: 50vh;
+    width: 100%;
+    position: absolute;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.5);
+    .container {
+        position: relative;
+        height: 100%;
+        @include directionAlignJustify(column, center, space-evenly);
+        img {
+            max-width: 30rem;
+        }
+        p {
+            color: var(--dark);
+            font-size: 3rem;
+            text-align: center;
+            max-width: 50%;
+        }
+    }
+}
+
+.intermission2 {
+    height: 30vh;
+}
+
+.voice-bank {
+    margin-top: 50vh;
+    background-color: var(--white);
+    .container {
+        width: 100%;
+        padding: 0;
+        overflow: hidden;
+        @include directionAlignJustify(row, center, center);
+        .characters-area, .character-expanded-area {
+            background-color: var(--light);
+            max-height: 100vh;
+            animation-duration: 0.5s;
+            animation-fill-mode: forwards;
+        }
+        .characters-area {
+            border-radius: 2rem 0 0 2rem;
+            overflow-y: auto;
+            max-width: 20%;
+            width: 100%;
+            padding: 2rem 0;
+            @include directionAlignJustify(column, center, space-between);
+            .character-info-min {
+                max-width: 100%;
+                @include directionAlignJustify(column, center, center);
+                img {
+                    border-radius: 5rem;
+                    max-width: 80%;
+                    margin-bottom: 5rem;
+                    transition: .3s all;
+                    &:hover {
+                        transform: scale(1.02);
+                        opacity: .9;
+                        cursor: pointer;
+                        border: 5px solid var(--primary);
+                    }
+                    &:active {
+                        transform: scale(.98);
+                        opacity: .75;
+                    }
+                    &.active {
+                        border: 5px solid var(--primary);
+                        transform: scale(.98);
+                        opacity: .75;
+                    }
+                }
+                &:first-of-type {
+                    img {
+                        margin-top: 7rem;
+                    }
+                }
+            }
+        }
+
+        .character-expanded-area {
+            border-radius: 0 2rem 2rem 0;
+            max-width: 80%;
+            width: 100%;
+            padding: 2rem;
+            height: 100vh;
+            opacity: 0;
+            transform: translateX(50vw);
+            transition: opacity 1s ease, transform 1s ease, background-color 1s ease; /* Transition for smooth effect */
+            .container {
+                overflow: auto;
+                margin-top: 3rem;
+                opacity: 0;
+                transition: opacity 0.5s ease, transform 0.5s ease, background-color 1s ease; /* Transition for smooth effect */
+                height: 100%;
+                background-color: var(--light);
+                @include directionAlignJustify(column, center, center);
+                .character {
+                    .character-info {
+                        .center {
+                            margin-top: .5rem;
+                            @include directionAlignJustify(row, center, center);
+                            a {
+                                transition: .2s all;
+                                display: inline-flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                                &:hover {
+                                    transform: scale(1.01);
+                                    opacity: .8;
+                                }
+                                &:active {
+                                    transform: scale(.98);
+                                }
+                            }
+                            img {
+                                transition: opacity 1s ease-in-out; /* Adiciona a transição de opacidade */
+                            }
+                        }
+                        .character-img-container {
+                            width: 22rem; 
+                            height: 22rem;
+                            overflow: hidden;
+                            border-radius: 50%;
+                            position: relative;
+                            img {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                width: auto;
+                                height: auto;
+                                min-width: 100%;
+                                min-height: 100%;
+                                transform: translate(-50%, -50%);
+                            }
+                        }
+                        
+                        .character-name-area, .character-team-area a {
+                            @include directionAlignJustify(row, center, center);
+                            h2 {
+                                margin-right: 2rem;
+                            }
+                        }
+                        
+                        .character-name-area {
+                            margin: 2rem 0;
+                            align-items: center;
+                            h2, em {
+                                text-align: center;
+                            }
+                            h2 {
+                                font-size: 4rem;
+                                transition: 1s color;
+                            }
+                            em {
+                                b {
+                                    font-size: 3rem;
+                                    transition: 1s color;
+                                }
+                            }
+                        }
+
+                        .character-series-area {
+                            @include directionAlignJustify(row, center, center);
+                            font-size: 2rem;
+                            text-align: center;
+                            h3 {
+                                margin-right: 1rem;
+                            }
+                            h3, a {
+                                transition: color 1s ease;
+                            }
+                            margin-bottom: 2.5rem;
+                            a {
+                                transition: .2s all;
+                                span {
+                                    transition: 1s color;
+                                    font-size: 2.4rem;
+                                }
+                                &:hover {
+                                    transform: scale(1.01);
+                                    opacity: .8;
+                                }
+                                &:active {
+                                    transform: scale(.98);
+                                }
+                            }
+                        }
+
+                        .character-team-area {
+                            @include directionAlignJustify(column, center, center);
+                            text-align: center;
+                            h3 {
+                                transition: color 1s ease;
+                                font-size: 2.1rem;
+                                margin-bottom: 1.5rem;
+                            }
+                            .team-area a {
+                                margin-bottom: 2rem;
+                                @include directionAlignJustify(row, center, center);
+                                display: inline-flex;
+                                transition: .2s all;
+                                span {
+                                    font-size: 2.3rem;
+                                    transition: color 1s ease;
+                                }
+                                &:hover {
+                                    transform: scale(1.02);
+                                    opacity: .8;
+                                }
+                                &:active {
+                                    transform: scale(.98);
+                                }
+                                img {
+                                    width: 100%;
+                                    max-width: 5.5rem;
+                                    border-radius: 50%;
+                                    margin-right: 2rem;
+                                }
+                            }
+                        }
+                        .character-year-area {
+
+                            @include directionAlignJustify(column, center, center);
+                            text-align: center;
+                            h3, span {
+                                font-size: 2rem;
+                                transition: color 1s ease;
+                            }
+                            span {
+                                margin-bottom: 2rem;
+                            }
+                        }
+                        .character-bio-area {
+                            @include directionAlignJustify(row, center, center);
+                            margin-bottom: 2rem;
+                            p {
+                                font-size: 1.9rem;
+                                text-align: center;
+                                max-width: 90%;
+                                line-height: 1.5;
+                                transition: color 1s ease;
+                            }
+                        }
+                        .character-audio-area {
+                            #character-audio-button i {
+                                color: inherit; /* This would cause the icon to inherit the color from the button */
+                            }
+                            @include directionAlignJustify(column, center, center);
+                            h3 {
+                                font-size: 2.5rem;
+                                transition: color 1s ease;
+                            }
+                            button {
+                                    color: var(--primary-darker);
+                                    font-size: 2rem;
+                                    transition: .2s all ease;
+                                i {
+                                    margin-left: .5rem;
+                                }
+                                margin: 2rem 0;
+                                background-color: var(--primary);
+                                font-weight: bold;
+                                padding: 2rem;
+                                border-radius: 2rem;
+                                &:hover {
+                                    background-color: var(--primary-darker);
+                                    transform: scale(1.02);
+                                    opacity: .9;
+                                    border: 3px solid var(--primary);
+                                    color: var(--primary);
+                                    
+                                } &:active {
+                                    transform: scale(.95);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.discord {
+    background-color: var(--discord-bg);
+    border-radius: 3rem;
+    @include directionAlignJustify(row, center, center);
+    width: 40%;
+    max-width: 50%;
+    padding: 2rem;
+    transition: .2s all;
+
+    .image-area {
+        @include directionAlignJustify(row, center, center);
+        img {
+            max-width: 80%;
+            border: .5rem solid var(--discord-green);
+            padding: .5rem;
+            margin-right: 5rem;
+            border-radius: 50%;
+        }
+    }
+
+    .text-area {
+        @include directionAlignJustify(column, center, center);
+        .discord-cta {
+            text-align: center;
+            color: var(--light);
+            font-family: "Uni Sans Heavy", sans-serif;
+            font-size: 3rem;
+        }
+
+        .discord-brand {
+            font-size: 6.6rem;
+        }
+    }
+
+    &:hover {
+        transform: scale(1.02);
+        opacity: .9;
+        cursor: pointer;
+        @keyframes rotateAnimation {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+    }
+    &:active {
+        transform: scale(0.98);
+    }
+}
