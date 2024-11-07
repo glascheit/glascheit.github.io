@@ -429,7 +429,7 @@ img {
 .voice-bank .container .character-expanded-area .container .character .character-info .character-audio-area button {
   color: var(--primary-darker);
   font-size: 2rem;
-  transition: 0.2s all ease;
+  transition: color 1s ease, background-color 1s ease, transform 0.2s ease;
   margin: 2rem 0;
   background-color: var(--primary);
   font-weight: bold;

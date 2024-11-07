@@ -331,7 +331,7 @@
                             button {
                                     color: var(--primary-darker);
                                     font-size: 2rem;
-                                    transition: .2s all ease;
+                                    transition: color 1s ease, background-color 1s ease, transform 0.2s ease;
                                 i {
                                     margin-left: .5rem;
                                 }
