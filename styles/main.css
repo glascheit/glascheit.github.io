@@ -453,10 +453,6 @@ img {
 .discord {
   background-color: var(--discord-bg);
   border-radius: 3rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   width: 40%;
   max-width: 50%;
   padding: 2rem;
@@ -648,10 +644,15 @@ footer .container {
   align-items: center;
   justify-content: center;
 }
-footer .discord {
-  margin-top: 4rem;
+footer .container a {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 footer .discord {
+  margin-top: 4rem;
   margin-bottom: 4rem;
 }
 footer b {
@@ -664,15 +665,15 @@ footer b:first-of-type {
   opacity: 0.9;
   margin-bottom: 2rem;
 }
-footer a, footer span:not(#copyright-year) {
+footer a:not(#discord-link), footer span:not(#copyright-year) {
   transition: 0.2s all;
 }
-footer a:hover, footer span:not(#copyright-year):hover {
+footer a:not(#discord-link):hover, footer span:not(#copyright-year):hover {
   text-decoration: underline;
   opacity: 0.75;
   font-size: 1.9rem;
 }
-footer a:active, footer span:not(#copyright-year):active {
+footer a:not(#discord-link):active, footer span:not(#copyright-year):active {
   font-size: 1.7rem;
 }
 footer #hello-kitty {

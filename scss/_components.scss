@@ -362,7 +362,6 @@
 .discord {
     background-color: var(--discord-bg);
     border-radius: 3rem;
-    @include directionAlignJustify(row, center, center);
     width: 40%;
     max-width: 50%;
     padding: 2rem;

@@ -8,13 +8,14 @@ footer {
 
     .container {
         @include directionAlignJustify(row, center, center);
+        a {
+            width: 100%;
+            @include directionAlignJustify(row, center, center);
+        }
     }
 
     .discord {
         margin-top: 4rem;
-    }
-
-    .discord {
         margin-bottom: 4rem;
     }
     
@@ -30,7 +31,7 @@ footer {
         margin-bottom: 2rem;
     }
 
-    a, span:not(#copyright-year) {
+    a:not(#discord-link), span:not(#copyright-year) {
         transition: .2s all;
         &:hover {
             text-decoration: underline;

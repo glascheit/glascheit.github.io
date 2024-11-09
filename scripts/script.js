@@ -72,6 +72,8 @@ const characterAudioButton = document.getElementById("character-audio-button");
 const characterAudioButtonIcon = document.getElementById("character-audio-button-icon");
 
 const footer = document.querySelector("footer");
+const usernameDiscord = document.getElementById("username-discord");
+const discordLink = document.getElementById("discord-link");
 const helloKitty = document.getElementById("hello-kitty");
 const copyrightYear = document.getElementById("copyright-year");
 
@@ -98,10 +100,6 @@ function hexToRGBA70Opac(hex) {
 }
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-const openLink = (link) => {
-  window.open(link, "_blank");
-};
 
 function lightOrDark(color) {
   // Variables for red, green, blue values
@@ -201,6 +199,10 @@ const getData = async () => {
 
     username = data.username;
     formattedUsername = username.charAt(0).toUpperCase() + username.slice(1);
+    usernameDiscord.textContent = `@${username}`;
+
+    discordLink.href = formattedStringForTalking;
+    discordLink.target = "_blank";
     globalName = data.global_name;
     avatar = data.avatar.link;
     color = data.banner.color;
@@ -224,7 +226,7 @@ const getData = async () => {
 
     updateFooter();
   } catch (error) {
-    alert("");
+    alert("Erro ao obter dados.");
   }
 };
 
@@ -636,9 +638,6 @@ const changeDiscordIcon = () => {
   }
 };
 
-discordComponent.addEventListener("click", () => {
-  openLink(formattedStringForTalking);
-});
 discordComponent.addEventListener("mouseover", changeDiscordIcon);
 
 window.onblur = () => {
