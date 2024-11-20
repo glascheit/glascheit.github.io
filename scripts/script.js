@@ -38,6 +38,8 @@ const discordComponent = document.querySelector(".discord");
 
 const favicon = document.getElementById("favicon");
 
+const aboutMe = document.getElementById("about-me");
+
 const usernameNavbar = document.getElementById("username-navbar");
 const usernameAboutMe = document.getElementById("username-about-me");
 
@@ -145,6 +147,14 @@ const calculateYearText = (recordYear) => {
   else if (recordYear - year === 1) return `daqui a ${recordYear - year} ano`;
   else if (recordYear > year) return `daqui a ${recordYear - year} anos`;
   else return `há ${year - recordYear} anos`;
+};
+
+const setWallpaper = (qtdWallpapers) => {
+  const random = Math.floor(Math.random() * qtdWallpapers) + 1;
+  aboutMe.style.background = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(./assets/images/components/aboutMe/bg${random}.jpg)`;
+  aboutMe.style.backgroundPosition = "0%";
+  aboutMe.style.backgroundSize = "cover";
+  aboutMe.style.backgroundRepeat = "no-repeat";
 };
 
 const getData = async () => {
@@ -622,9 +632,6 @@ const resetCharacterData = () => {
   }, 500);
 };
 
-getData();
-getCharactersImages();
-
 const changeDiscordIcon = () => {
   if (!changed && avatar) {
     discordPfp.style.animation = "rotateAnimation .5s linear normal";
@@ -639,6 +646,12 @@ const changeDiscordIcon = () => {
 };
 
 discordComponent.addEventListener("mouseover", changeDiscordIcon);
+
+window.onload = () => {
+  setWallpaper(6);
+  getData();
+  getCharactersImages();
+};
 
 window.onblur = () => {
   changeTitle(unfocusedTitle);

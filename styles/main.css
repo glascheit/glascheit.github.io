@@ -80,9 +80,6 @@ img {
 
 .about-me {
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../assets/images/components/aboutMe/background.jpg);
-  background-position: 0%;
-  background-size: cover;
 }
 .about-me .container {
   height: 100%;
