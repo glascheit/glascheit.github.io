@@ -361,8 +361,11 @@
     border-radius: 3rem;
     width: 40%;
     max-width: 50%;
-    padding: 2rem;
     transition: .2s all;
+
+    a {
+        padding: 2rem;
+    }
 
     .image-area {
         @include directionAlignJustify(row, center, center);

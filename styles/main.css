@@ -452,8 +452,10 @@ img {
   border-radius: 3rem;
   width: 40%;
   max-width: 50%;
-  padding: 2rem;
   transition: 0.2s all;
+}
+.discord a {
+  padding: 2rem;
 }
 .discord .image-area {
   display: flex;
