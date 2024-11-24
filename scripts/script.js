@@ -544,7 +544,7 @@ const getCharactersImages = async () => {
     });
 
     for (const char of dataCharacters) {
-      const { name, isJaponice, characterPicture } = char;
+      const { name, isJaponice, characterPicture, backgroundColor, textColor } = char;
 
       formattedName = getFormattedName(name);
 
@@ -564,6 +564,12 @@ const getCharactersImages = async () => {
       const characterImage = document.createElement("img");
       characterImage.src = charPicture;
       characterImage.alt = `Imagem de ${formattedName}`;
+
+      if (backgroundColor && lightOrDark(backgroundColor) === "dark") {
+        characterImage.style.borderColor = backgroundColor;
+      } else if (!backgroundColor && textColor) {
+        characterImage.style.borderColor = textColor;
+      }
 
       characterImage.addEventListener("click", () => {
         const allCharacterImages = document.querySelectorAll(
