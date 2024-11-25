@@ -44,15 +44,11 @@ const usernameNavbar = document.getElementById("username-navbar");
 const usernameAboutMe = document.getElementById("username-about-me");
 
 const charactersArea = document.getElementById("characters-area");
-const characterExpandedArea = document.getElementById(
-  "character-expanded-area"
-);
+const characterExpandedArea = document.getElementById("character-expanded-area");
 const characterExpandedAreaContainer = document.getElementById("character-expanded-area-container");
 const characterImg = document.getElementById("character-img");
 const characterName = document.getElementById("character-name");
-const characterJapaneseName = document.getElementById(
-  "character-japanese-name"
-);
+const characterJapaneseName = document.getElementById("character-japanese-name");
 
 const characterSeries = document.getElementById("character-series");
 const characterSeriesLink = document.getElementById("character-series-link");
@@ -103,6 +99,7 @@ function hexToRGBA70Opac(hex) {
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+// credits: andreaswik
 function lightOrDark(color) {
   // Variables for red, green, blue values
   var r, g, b, hsp;
