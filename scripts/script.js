@@ -40,6 +40,8 @@ const favicon = document.getElementById("favicon");
 
 const aboutMe = document.getElementById("about-me");
 
+const voiceBank = document.getElementById("voice-bank");
+
 const usernameNavbar = document.getElementById("username-navbar");
 const usernameAboutMe = document.getElementById("username-about-me");
 
@@ -527,6 +529,7 @@ const getDataFromTeam = async (teamId) => {
 
 const getCharactersImages = async () => {
   try {
+    charactersArea.style.display = "none";
     const resCharacters = await fetch("./scripts/data/characters.json");
     if (!resCharacters.ok) {
       throw new Error(`Error fetching characters: ${resCharacters.status}`);
@@ -539,6 +542,8 @@ const getCharactersImages = async () => {
       }
       return b.year - a.year;
     });
+
+    const allCharacterElements = []; // Array to store all the character elements
 
     for (const char of dataCharacters) {
       const { name, isJaponice, characterPicture, backgroundColor, textColor } = char;
@@ -588,14 +593,29 @@ const getCharactersImages = async () => {
       });
 
       characterInfoMin.appendChild(characterImage);
-      charactersArea.appendChild(characterInfoMin);
 
+      // Add the character element to the array
+      allCharacterElements.push(characterInfoMin);
+
+      // Introduce a delay to space out the processing
+      await delay(300);
+    }
+    
+    charactersArea.style.display = "flex";
+
+    // After processing all characters, append them to the DOM at once
+    for (let i=0; i<allCharacterElements.length; i++){
+      charactersArea.append(allCharacterElements[i]);
+      // descomente a linha abaixo se quiser fazer o componente menor do banco de vozes rolar para o final a cada personagem que aparecer
+      // charactersArea.scrollTop = charactersArea.scrollHeight;
       await delay(500);
     }
+
   } catch (error) {
     console.error("Fetch error:", error);
   }
 };
+
 
 const resetCharacterData = () => {
   characterExpandedArea.opacity = "0";
