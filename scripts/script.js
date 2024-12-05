@@ -527,9 +527,10 @@ const getDataFromTeam = async (teamId) => {
   }
 };
 
+let fetchedCharacters = []; // Array to store fetched characters
+
 const getCharactersImages = async () => {
   try {
-    charactersArea.style.display = "none";
     const resCharacters = await fetch("./scripts/data/characters.json");
     if (!resCharacters.ok) {
       throw new Error(`Error fetching characters: ${resCharacters.status}`);
@@ -543,104 +544,79 @@ const getCharactersImages = async () => {
       return b.year - a.year;
     });
 
-    const allCharacterElements = []; // Array to store all the character elements
-
-    for (const char of dataCharacters) {
-      const { name, isJaponice, characterPicture, backgroundColor, textColor } = char;
-
-      formattedName = getFormattedName(name);
-
-      let charPicture;
-
-      if (isJaponice) {
-        charPicture = await getCharactersImageFromMAL(formattedName);
-      } else if (characterPicture) {
-        charPicture = getFormattedFilename(characterPicture);
-      } else {
-        charPicture = getFormattedFilename(unknownPath, true);
-      }
-
-      const characterInfoMin = document.createElement("div");
-      characterInfoMin.classList.add("character-info-min");
-
-      const characterImage = document.createElement("img");
-      characterImage.src = charPicture;
-      characterImage.alt = `Imagem de ${formattedName}`;
-
-      if (backgroundColor && lightOrDark(backgroundColor) === "dark") {
-        characterImage.style.borderColor = backgroundColor;
-      } else if (!backgroundColor && textColor) {
-        characterImage.style.borderColor = textColor;
-      }
-
-      characterImage.addEventListener("click", () => {
-        const allCharacterImages = document.querySelectorAll(
-          ".character-info-min img"
-        );
-
-        if (characterImage.classList.contains("active")) {
-          characterImage.classList.remove("active");
-          resetCharacterData();
-        } else {
-          formattedName = getFormattedName(char.name);
-          allCharacterImages.forEach((img) => img.classList.remove("active"));
-          if (formattedName !== "Hiyoko Saionji") {
-            characterImg.style.transform = "";
-          }
-          updateCharacterInfo(char);
-          characterImage.classList.add("active");
-        }
-      });
-
-      characterInfoMin.appendChild(characterImage);
-
-      // Add the character element to the array
-      allCharacterElements.push(characterInfoMin);
-
-      // Introduce a delay to space out the processing
-      await delay(300);
-    }
-    
-    charactersArea.style.display = "flex";
-
-    if (window.innerWidth > 950) {
-      // After processing all characters, append them to the DOM at once
-      for (let i=0; i<allCharacterElements.length; i++){
-        charactersArea.append(allCharacterElements[i]);
-        charactersArea.scrollTo({
-          top: charactersArea.scrollHeight,
-          behavior: 'smooth'
-        });
-        await delay(500);
-      }
-  
-      charactersArea.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    } else {
-      // After processing all characters, append them to the DOM at once
-      for (let i=0; i<allCharacterElements.length; i++){
-        charactersArea.append(allCharacterElements[i]);
-        charactersArea.scrollTo({
-          left: charactersArea.scrollWidth,
-          behavior: 'smooth'
-        });
-        await delay(500);
-      }
-  
-      charactersArea.scrollTo({
-        left: 0,
-        behavior: 'smooth'
-      });
-    }
-
+    fetchedCharacters = dataCharacters; // Store fetched characters
 
   } catch (error) {
     console.error("Fetch error:", error);
   }
 };
 
+const renderCharacters = async () => { // Mark the function as async
+  charactersArea.style.display = "flex"; // Make the area visible
+  const allCharacterElements = []; // Array to store all the character elements
+
+  for (const char of fetchedCharacters) { // Use a for...of loop to allow await
+    const { name, isJaponice, characterPicture, backgroundColor, textColor } = char;
+
+    formattedName = getFormattedName(name);
+    let charPicture;
+
+    if (isJaponice) {
+      charPicture = await getCharactersImageFromMAL(formattedName); // Await here
+      await delay(300)
+    } else if (characterPicture) {
+      charPicture = getFormattedFilename(characterPicture);
+    } else {
+      charPicture = getFormattedFilename(unknownPath, true);
+    }
+
+    const characterInfoMin = document.createElement("div");
+    characterInfoMin.classList.add("character-info-min");
+
+    const characterImage = document.createElement("img");
+    characterImage.src = charPicture;
+    characterImage.alt = `Imagem de ${formattedName}`;
+
+    if (backgroundColor && lightOrDark(backgroundColor) === "dark") {
+      characterImage.style.borderColor = backgroundColor;
+    } else if (!backgroundColor && textColor) {
+      characterImage.style.borderColor = textColor;
+    }
+
+    characterImage.addEventListener("click", () => {
+      const allCharacterImages = document.querySelectorAll(".character-info-min img");
+      if (characterImage.classList.contains("active")) {
+        characterImage.classList.remove("active");
+        resetCharacterData();
+      } else {
+        formattedName = getFormattedName(char.name);
+        allCharacterImages.forEach((img) => img.classList.remove("active"));
+        updateCharacterInfo(char);
+        characterImage.classList.add("active");
+      }
+    });
+
+    characterInfoMin.appendChild(characterImage);
+    allCharacterElements.push(characterInfoMin); // Store the character element
+  }
+
+  // Append all character elements to the DOM with a delay
+
+  for (let i = 0; i < allCharacterElements.length; i++) {
+    charactersArea.append(allCharacterElements[i]);
+    charactersArea.scrollTo({
+      top: charactersArea.scrollHeight,
+      behavior: 'smooth'
+    });
+    await delay(500); // Wait for 500 milliseconds before rendering the next character
+  }
+
+  // Scroll back to the top after all characters have been rendered
+  charactersArea.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
 
 const resetCharacterData = () => {
   characterExpandedArea.opacity = "0";
@@ -693,12 +669,26 @@ const changeDiscordIcon = () => {
   }
 };
 
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // If charactersArea is visible, render characters
+      renderCharacters();
+      // Unobserve after rendering to prevent multiple calls
+      observer.unobserve(entry.target);
+    }
+  });
+});
+
+// Observe the charactersArea
+observer.observe(charactersArea);
+
 discordComponent.addEventListener("mouseover", changeDiscordIcon);
 
 window.onload = () => {
   setWallpaper(6);
   getData();
-  getCharactersImages();
+  getCharactersImages(); // Fetch characters on load
 };
 
 window.onblur = () => {
