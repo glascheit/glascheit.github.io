@@ -552,7 +552,6 @@ const getCharactersImages = async () => {
 };
 
 const renderCharacters = async () => { // Mark the function as async
-  charactersArea.style.display = "flex"; // Make the area visible
   const allCharacterElements = []; // Array to store all the character elements
 
   for (const char of fetchedCharacters) { // Use a for...of loop to allow await
@@ -671,17 +670,35 @@ const changeDiscordIcon = () => {
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
+    // When charactersArea is in view, render characters
     if (entry.isIntersecting) {
-      // If charactersArea is visible, render characters
       renderCharacters();
-      // Unobserve after rendering to prevent multiple calls
+      // Unobserve once it has been triggered to avoid repeated rendering
       observer.unobserve(entry.target);
     }
   });
+}, {
+  rootMargin: "0px", // Optional: Can adjust this if you want to trigger early or later (e.g., before the element fully enters view)
+  threshold: 0.3  // When 10% of the element is visible, trigger the observer
 });
 
-// Observe the charactersArea
 observer.observe(charactersArea);
+
+const isInViewport = (el) => {
+  const rect = el.getBoundingClientRect();
+  return rect.top >= 0 && rect.bottom <= window.innerHeight;
+};
+
+window.addEventListener("load", () => {
+  const charactersArea = document.getElementById('charactersArea');
+
+  // Check if charactersArea is already in view on page load
+  if (isInViewport(charactersArea)) {
+    renderCharacters();
+  } else {
+    observer.observe(charactersArea);
+  }
+});
 
 discordComponent.addEventListener("mouseover", changeDiscordIcon);
 
