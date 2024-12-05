@@ -603,13 +603,26 @@ const getCharactersImages = async () => {
     
     charactersArea.style.display = "flex";
 
-    // After processing all characters, append them to the DOM at once
-    for (let i=0; i<allCharacterElements.length; i++){
-      charactersArea.append(allCharacterElements[i]);
-      // descomente a linha abaixo se quiser fazer o componente menor do banco de vozes rolar para o final a cada personagem que aparecer
-      // charactersArea.scrollTop = charactersArea.scrollHeight;
-      await delay(500);
+    if (window.innerWidth > 950) {
+      // After processing all characters, append them to the DOM at once
+      for (let i=0; i<allCharacterElements.length; i++){
+        charactersArea.append(allCharacterElements[i]);
+        charactersArea.scrollTop = charactersArea.scrollHeight;
+        await delay(500);
+      }
+  
+      charactersArea.scrollTop = 0;
+    } else {
+      // After processing all characters, append them to the DOM at once
+      for (let i=0; i<allCharacterElements.length; i++){
+        charactersArea.append(allCharacterElements[i]);
+        charactersArea.scrollLeft = charactersArea.scrollWidth;
+        await delay(500);
+      }
+  
+      charactersArea.scrollLeft = 0;
     }
+
 
   } catch (error) {
     console.error("Fetch error:", error);
