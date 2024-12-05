@@ -609,20 +609,37 @@ const renderCharacters = async () => { // Mark the function as async
 
   // Append all character elements to the DOM with a delay
 
-  for (let i = 0; i < allCharacterElements.length; i++) {
-    charactersArea.append(allCharacterElements[i]);
+  if (window.innerWidth <= 950) {
+    for (let i = 0; i < allCharacterElements.length; i++) {
+      charactersArea.append(allCharacterElements[i]);
+      charactersArea.scrollTo({
+        left: charactersArea.scrollWidth,
+        behavior: 'smooth'
+      });
+      await delay(500); // Wait for 500 milliseconds before rendering the next character
+    }
+  
+    // Scroll back to the left after all characters have been rendered
     charactersArea.scrollTo({
-      top: charactersArea.scrollHeight,
+      left: 0,
       behavior: 'smooth'
     });
-    await delay(500); // Wait for 500 milliseconds before rendering the next character
+  } else {
+    for (let i = 0; i < allCharacterElements.length; i++) {
+      charactersArea.append(allCharacterElements[i]);
+      charactersArea.scrollTo({
+        top: charactersArea.scrollHeight,
+        behavior: 'smooth'
+      });
+      await delay(500); // Wait for 500 milliseconds before rendering the next character
+    }
+  
+    // Scroll back to the top after all characters have been rendered
+    charactersArea.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
-
-  // Scroll back to the top after all characters have been rendered
-  charactersArea.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
 };
 
 const resetCharacterData = () => {
