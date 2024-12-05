@@ -607,20 +607,32 @@ const getCharactersImages = async () => {
       // After processing all characters, append them to the DOM at once
       for (let i=0; i<allCharacterElements.length; i++){
         charactersArea.append(allCharacterElements[i]);
-        charactersArea.scrollTop = charactersArea.scrollHeight;
+        charactersArea.scrollTo({
+          top: charactersArea.scrollHeight,
+          behavior: 'smooth'
+        });
         await delay(500);
       }
   
-      charactersArea.scrollTop = 0;
+      charactersArea.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     } else {
       // After processing all characters, append them to the DOM at once
       for (let i=0; i<allCharacterElements.length; i++){
         charactersArea.append(allCharacterElements[i]);
-        charactersArea.scrollLeft = charactersArea.scrollWidth;
+        charactersArea.scrollTo({
+          left: charactersArea.scrollWidth,
+          behavior: 'smooth'
+        });
         await delay(500);
       }
   
-      charactersArea.scrollLeft = 0;
+      charactersArea.scrollTo({
+        left: 0,
+        behavior: 'smooth'
+      });
     }
 
 
