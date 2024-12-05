@@ -10,6 +10,8 @@ let username,
   formattedName,
   focusedTitle = "";
 
+let charactersFetched = false; // Flag to track if characters have been fetched
+
 let intervalId;
 
 const date = new Date();
@@ -545,6 +547,12 @@ const getCharactersImages = async () => {
     });
 
     fetchedCharacters = dataCharacters; // Store fetched characters
+    charactersFetched = true; // Set the flag to true
+
+    // Check if charactersArea is in view and render characters if it is
+    if (isInViewport(charactersArea)) {
+      renderCharacters();
+    }
 
   } catch (error) {
     console.error("Fetch error:", error);
@@ -668,44 +676,40 @@ const changeDiscordIcon = () => {
   }
 };
 
+discordComponent.addEventListener("mouseover", changeDiscordIcon);
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    // When charactersArea is in view, render characters
-    if (entry.isIntersecting) {
+    // When charactersArea is in view and characters have been fetched, render characters
+    if (entry.isIntersecting && charactersFetched) {
       renderCharacters();
       // Unobserve once it has been triggered to avoid repeated rendering
       observer.unobserve(entry.target);
     }
   });
-}, {
-  rootMargin: "0px", // Optional: Can adjust this if you want to trigger early or later (e.g., before the element fully enters view)
-  threshold: 0.3  // When 10% of the element is visible, trigger the observer
 });
-
-observer.observe(charactersArea);
-
-const isInViewport = (el) => {
-  const rect = el.getBoundingClientRect();
-  return rect.top >= 0 && rect.bottom <= window.innerHeight;
-};
-
-window.addEventListener("load", () => {
-  const charactersArea = document.getElementById('charactersArea');
-
-  // Check if charactersArea is already in view on page load
-  if (isInViewport(charactersArea)) {
-    renderCharacters();
-  } else {
-    observer.observe(charactersArea);
-  }
-});
-
-discordComponent.addEventListener("mouseover", changeDiscordIcon);
 
 window.onload = () => {
   setWallpaper(6);
   getData();
   getCharactersImages(); // Fetch characters on load
+
+  // Start observing charactersArea
+  observer.observe(charactersArea);
+
+  // Check for URL hash to trigger renderCharacters for specific elements
+  if (window.location.hash) {
+    const targetElement = document.getElementById(window.location.hash.substring(1));
+    if (targetElement && isInViewport(targetElement)) {
+      renderCharacters();
+    }
+  }
+};
+
+// Update isInViewport to accept an element parameter
+const isInViewport = (element) => {
+  const rect = element ? element.getBoundingClientRect() : charactersArea.getBoundingClientRect();
+  return rect.top >= 0 && rect.bottom <= window.innerHeight;
 };
 
 window.onblur = () => {
