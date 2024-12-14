@@ -187,8 +187,13 @@ const getData = async () => {
 
     footer.insertBefore(creditContainer, helloKitty);
 
-    const corTexto =
-      lightOrDark(color) === "dark" ? "var(--light)" : "var(--dark)";
+    const isDark = lightOrDark(color) === "dark";
+
+    if (isDark) {
+      footer.style.backgroundImage = `url("../assets/images/components/footer/footerBgLight.png")`;
+    }
+
+    const corTexto = isDark ? "var(--light)" : "var(--dark)";
 
     const footerTextElements = document.querySelectorAll("footer *");
     footerTextElements.forEach((el) => {
@@ -216,6 +221,11 @@ const getData = async () => {
     discordLink.target = "_blank";
     globalName = data.global_name;
     avatar = data.avatar.link;
+    
+    isAnimated = data.avatar.is_animated;
+
+    if (isAnimated) avatar += `.gif`
+
     color = data.banner.color;
     creationYear = data.created_at.split("-")[0];
 
