@@ -195,12 +195,7 @@ const getData = async () => {
 
     const corTexto = isDark ? "var(--light)" : "var(--dark)";
 
-    const footerTextElements = document.querySelectorAll("footer *");
-    footerTextElements.forEach((el) => {
-      if (el.tagName !== "H2") {
-        el.style.color = corTexto;
-      }
-    });
+    document.querySelectorAll("footer *:not(h2)").forEach(el => el.style.color = corTexto);
 
     heartIcon.style.color = "red";
 
