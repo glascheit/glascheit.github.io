@@ -820,6 +820,7 @@ footer #hello-kitty {
     flex-direction: column;
   }
   .voice-bank .container .characters-area {
+    border-radius: 0;
     padding: 2rem;
     flex-direction: row;
     max-width: 100%;

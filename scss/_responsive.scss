@@ -183,6 +183,7 @@
         .container {
             flex-direction: column;
             .characters-area {
+                border-radius: 0;
                 padding: 2rem;
                 flex-direction: row;
                 max-width: 100%;
