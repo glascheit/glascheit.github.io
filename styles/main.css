@@ -837,6 +837,7 @@ footer #hello-kitty {
   .voice-bank .container .character-expanded-area {
     max-width: 100%;
     padding: 0;
+    border-radius: 0;
   }
   .voice-bank .container .character-expanded-area .container {
     width: 100%;

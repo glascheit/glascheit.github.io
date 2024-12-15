@@ -436,6 +436,8 @@ const getAdditionalDataFromMAL = async (charName) => {
 
     if (charName === "Hiyoko Saionji" && characterImg) {
       characterImg.style.transform = "translate(-50%, -32%)";
+    } else {
+      characterImg.style.transform = "translate(-50%, -50%)";
     }
 
     if (!characterImg) {
