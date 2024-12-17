@@ -4,11 +4,14 @@ const emojiTab = "❀";
 let username,
   globalName,
   avatar,
+  banner,
   color,
   creationYear,
   formattedUsername,
   formattedName,
   focusedTitle = "";
+
+let isAnimatedBanner = false;
 
 let charactersFetched = false; // Flag to track if characters have been fetched
 
@@ -78,6 +81,9 @@ const usernameDiscord = document.getElementById("username-discord");
 const discordLink = document.getElementById("discord-link");
 const helloKitty = document.getElementById("hello-kitty");
 const copyrightYear = document.getElementById("copyright-year");
+
+const footerBg = document.getElementById("footer-bg");
+const blackOverlay = document.getElementById("black-overlay");
 
 let changed = false;
 
@@ -185,21 +191,28 @@ const getData = async () => {
     creditContainer.appendChild(document.createTextNode(" "));
     creditContainer.appendChild(heartIcon);
 
-    footer.insertBefore(creditContainer, helloKitty);
-
-    const isDark = lightOrDark(color) === "dark";
-
-    if (isDark) {
-      footer.style.backgroundImage = `url("../assets/images/components/footer/footerBgLight.png")`;
-    }
-
-    const corTexto = isDark ? "var(--light)" : "var(--dark)";
-
-    document.querySelectorAll("footer *:not(h2)").forEach(el => el.style.color = corTexto);
-
     heartIcon.style.color = "red";
 
     copyrightYear.textContent = `${globalName} ~ © ${creationYear} - ${year}`;
+
+    footer.insertBefore(creditContainer, helloKitty);
+
+    if (color) {
+      const isDark = lightOrDark(color) === "dark";
+      if (isDark) {
+        footer.style.backgroundImage = `url("../assets/images/components/footer/footerBgLight.png")`;
+      }
+  
+      const corTexto = isDark ? "var(--light)" : "var(--dark)";
+      document.querySelectorAll("footer *:not(h2, i)").forEach(el => el.style.color = corTexto);
+    }
+
+    if (isAnimatedBanner) {
+      document.querySelectorAll("footer *:not(h2, div#black-overlay, i)").forEach(el => {
+        el.style.color = "var(--light)";
+        el.style.zIndex=4;
+      });
+    }
   };
   try {
     const res = await fetch(`${discAPIURLBase}/${glasId}`);
@@ -217,9 +230,23 @@ const getData = async () => {
     globalName = data.global_name;
     avatar = data.avatar.link;
     
-    isAnimated = data.avatar.is_animated;
+    const isAnimatedAvatar = data.avatar.is_animated;
+    if (isAnimatedAvatar) avatar += `.gif`
 
-    if (isAnimated) avatar += `.gif`
+    isAnimatedBanner = data.banner.is_animated;
+    
+    if (isAnimatedBanner) {
+      const bannerUrl = new URL(data.banner.link);
+      bannerUrl.pathname += '.gif'; // Append .gif to the pathname
+      banner = bannerUrl.toString(); // Convert back to string
+      footer.style.backgroundImage = `url(${banner})`;
+      footer.style.backgroundRepeat = "no-repeat";
+      footer.style.backgroundSize = "cover";
+      footer.style.backgroundPosition = "center";
+
+      footerBg.style.display = "flex";
+      blackOverlay.style.display = "flex";
+    }
 
     color = data.banner.color;
     creationYear = data.created_at.split("-")[0];
@@ -242,6 +269,7 @@ const getData = async () => {
 
     updateFooter();
   } catch (error) {
+    console.error(error);
     alert("Erro ao obter dados.");
   }
 };
