@@ -258,6 +258,10 @@ const getData = async () => {
 
     color = data.banner.color;
 
+    if (!color && avatar) {
+      makeColorAvatarsMainColor();
+    }
+
     if (isAnimatedBanner) {
       const bannerUrl = new URL(data.banner.link);
       bannerUrl.pathname += '.gif'; // Append .gif to the pathname
@@ -289,10 +293,11 @@ const getData = async () => {
     }
     if (color) {
       footer.style.backgroundColor = color;
-    } else {
-      makeColorAvatarsMainColor();
     }
 
+    if (!isAnimatedBanner) {
+      await delay(1000);
+    }
     updateFooter();
   } catch (error) {
     console.error(error);
