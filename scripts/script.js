@@ -261,7 +261,6 @@ const getData = async () => {
 
       img.addEventListener('load', function() {
         const tempColor = colorThief.getColor(img);
-        console.log(tempColor);
         color = rgbToHex(tempColor[0], tempColor[1], tempColor[2]);
       });
 
@@ -286,8 +285,6 @@ const getData = async () => {
     if (color) {
       footer.style.backgroundColor = color;
     }
-
-    console.log(color, avatar);
 
     updateFooter();
   } catch (error) {
