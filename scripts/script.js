@@ -171,6 +171,20 @@ const setWallpaper = (qtdWallpapers) => {
   aboutMe.style.backgroundRepeat = "no-repeat";
 };
 
+const makeColorAvatarsMainColor = () => {
+  const colorThief = new ColorThief();
+  const img = new Image();
+
+  img.addEventListener('load', function() {
+    const tempColor = colorThief.getColor(img);
+    color = rgbToHex(tempColor[0], tempColor[1], tempColor[2]);
+    footer.style.backgroundColor = color;
+  });
+
+  img.crossOrigin = 'Anonymous';
+  img.src = avatar;
+}
+
 const getData = async () => {
   const updateFooter = () => {
     const creditContainer = document.createElement("b");
@@ -256,16 +270,7 @@ const getData = async () => {
       footerBg.style.display = "flex";
       blackOverlay.style.display = "flex";
 
-      const colorThief = new ColorThief();
-      const img = new Image();
-
-      img.addEventListener('load', function() {
-        const tempColor = colorThief.getColor(img);
-        color = rgbToHex(tempColor[0], tempColor[1], tempColor[2]);
-      });
-
-      img.crossOrigin = 'Anonymous';
-      img.src = avatar;
+      makeColorAvatarsMainColor();
     }
 
     creationYear = data.created_at.split("-")[0];
@@ -284,6 +289,8 @@ const getData = async () => {
     }
     if (color) {
       footer.style.backgroundColor = color;
+    } else {
+      makeColorAvatarsMainColor();
     }
 
     updateFooter();
