@@ -91,6 +91,9 @@ const changeTitle = (title) => {
   document.title = title;
 };
 
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+
 // credits: kennebec
 function hexToRGBA70Opac(hex) {
   var c;
@@ -107,7 +110,11 @@ function hexToRGBA70Opac(hex) {
   throw new Error("Bad Hex");
 }
 
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+// credits: lokeshdhakar
+const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
+  const hex = x.toString(16)
+  return hex.length === 1 ? '0' + hex : hex
+}).join('')
 
 // credits: andreaswik
 function lightOrDark(color) {
@@ -234,7 +241,9 @@ const getData = async () => {
     if (isAnimatedAvatar) avatar += `.gif`
 
     isAnimatedBanner = data.banner.is_animated;
-    
+
+    color = data.banner.color;
+
     if (isAnimatedBanner) {
       const bannerUrl = new URL(data.banner.link);
       bannerUrl.pathname += '.gif'; // Append .gif to the pathname
@@ -246,9 +255,20 @@ const getData = async () => {
 
       footerBg.style.display = "flex";
       blackOverlay.style.display = "flex";
+
+      const colorThief = new ColorThief();
+      const img = new Image();
+
+      img.addEventListener('load', function() {
+        const tempColor = colorThief.getColor(img);
+        console.log(tempColor);
+        color = rgbToHex(tempColor[0], tempColor[1], tempColor[2]);
+      });
+
+      img.crossOrigin = 'Anonymous';
+      img.src = avatar;
     }
 
-    color = data.banner.color;
     creationYear = data.created_at.split("-")[0];
 
     // SE VOCÊ QUISER QUE O TÍTULO DA GUIA SEJA O NOME PÚBLICO DO PERFIL (NO MOMENTO, "Chocolat ❀"), troque o "formattedUsername" da linha abaixo por "globalName".
@@ -266,6 +286,8 @@ const getData = async () => {
     if (color) {
       footer.style.backgroundColor = color;
     }
+
+    console.log(color, avatar);
 
     updateFooter();
   } catch (error) {

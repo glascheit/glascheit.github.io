@@ -22,6 +22,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <!-- Primary Meta Tags -->
@@ -229,8 +230,8 @@
         </p>
       </div>
     </div>
-    <footer id="footer" style="position: relative;">
-        <img id="footer-bg" src="../assets/images/components/footer/footerBgLight.png" alt="Background Footer" style="z-index: 3; opacity: .4; display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+    <footer id="footer" style="position: relative; overflow: hidden;">
+        <img id="footer-bg" src="../assets/images/components/footer/footerBgLight.png" alt="Background Footer" style="z-index: 3; display: none; position: absolute; top: 0; left: 0; object-fit: cover;" />
         <div id="black-overlay" style="display: none; z-index: 3; position: absolute; background-color: rgba(0, 0, 0, 0.8); width: 100%; height: 100%;"></div>
 
       <div class="container">
@@ -260,8 +261,11 @@
         id="hello-kitty"
       />
     </footer>
-    <script src="./scripts/script.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script src="./scripts/script.js"></script>
     <script>
       AOS.init();
     </script>
