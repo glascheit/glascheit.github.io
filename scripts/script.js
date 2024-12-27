@@ -25,6 +25,7 @@ const audio = new Audio();
 const unfocusedTitle = "EI, VOLTA AQUI!!! ᕙ( ᗒᗣᗕ )ᕗ";
 
 const APIErrorMessage = "Calma, a API não é de ferro! (ó﹏ò｡)";
+const dataObtentionErrorMessage = "Erro ao obter dados... (｡ó﹏ò)"
 
 const unknownPath = "unknown.png";
 const teamLogosPath = "./assets/images/teamLogos";
@@ -49,6 +50,11 @@ const voiceBank = document.getElementById("voice-bank");
 
 const usernameNavbar = document.getElementById("username-navbar");
 const usernameAboutMe = document.getElementById("username-about-me");
+
+const biggerLoadingContainer = document.getElementById("bigger-loading-container");
+const loadingContainer = document.getElementById("loading-container");
+const biggerLoadingErrorMsgAll = document.querySelectorAll(".bigger-loading-error-msg");
+const biggerLoader = document.getElementById("bigger-loader");
 
 const charactersArea = document.getElementById("characters-area");
 const characterExpandedArea = document.getElementById("character-expanded-area");
@@ -93,6 +99,35 @@ const changeTitle = (title) => {
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+const hideSmallerLoading = () => {
+  loadingContainer.style.display = "none";
+}
+
+const hideBiggerLoading = () => {
+  biggerLoadingContainer.style.display = "none";
+  document.body.style.overflow = "visible";
+}
+
+const renderAPIErrorMessage = (err) => {
+  alert(APIErrorMessage);
+  if (err) {
+    console.error(err);
+  }
+}
+
+const renderDataObtentionErrorMessage = (err) => {
+  alert(dataObtentionErrorMessage);
+  if (err) {
+    console.error(err);
+  }
+}
+
+const showBiggerLoadingErrorMsg = () => {
+  biggerLoadingErrorMsgAll.forEach((msg)=>{
+    msg.style.display = "flex";
+  })
+  biggerLoader.style.display = "none";
+}
 
 // credits: kennebec
 function hexToRGBA70Opac(hex) {
@@ -236,6 +271,7 @@ const getData = async () => {
     }
   };
   try {
+    document.body.style.overflow = "hidden";
     const res = await fetch(`${discAPIURLBase}/${glasId}`);
     if (!res.ok) {
       throw new Error(`Error fetching user data: ${res.status}`);
@@ -299,9 +335,10 @@ const getData = async () => {
       await delay(1000);
     }
     updateFooter();
+    hideBiggerLoading();
   } catch (error) {
-    console.error(error);
-    alert("Erro ao obter dados.");
+    renderDataObtentionErrorMessage(error);
+    showBiggerLoadingErrorMsg();
   }
 };
 
@@ -534,7 +571,7 @@ const getAdditionalDataFromMAL = async (charName) => {
     };
 
   } catch (error) {
-    alert(APIErrorMessage);
+    renderAPIErrorMessage(error);
   }
 };
 
@@ -553,8 +590,7 @@ const getCharactersImageFromMAL = async (charName) => {
       return;
     }
   } catch (error) {
-    console.error(error);
-    alert(APIErrorMessage);
+    renderAPIErrorMessage(error);
   }
 };
 
@@ -619,9 +655,8 @@ const getCharactersImages = async () => {
     if (isInViewport(charactersArea)) {
       renderCharacters();
     }
-
   } catch (error) {
-    console.error("Fetch error:", error);
+    renderDataObtentionErrorMessage(error)
   }
 };
 
@@ -672,6 +707,8 @@ const renderCharacters = async () => { // Mark the function as async
     characterInfoMin.appendChild(characterImage);
     allCharacterElements.push(characterInfoMin); // Store the character element
   }
+
+  hideSmallerLoading();
 
   // Append all character elements to the DOM with a delay
 

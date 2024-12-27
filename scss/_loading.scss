@@ -1,0 +1,50 @@
+.bigger-loading-container {
+  position: fixed; /* Fixed position to cover the entire screen */
+  top: 0;
+  left: 0;
+  background-color: var(--light); /* Semi-transparent background */
+  z-index: 9999; /* High z-index to be on top of other elements */
+  display: none; /* Hidden by default */
+}
+
+.loading-container, .bigger-loading-container {
+  @include directionAlignJustify(column, center, center);
+  width: 100%;
+  height: 100%;
+}
+
+.bigger-loading-error-msg {
+  display: none;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: darkred;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 45px;
+  aspect-ratio: 0.75;
+  --c: no-repeat linear-gradient(var(--primary-dark) 0 0);
+  background: var(--c) 0% 50%, var(--c) 50% 50%, var(--c) 100% 50%;
+  animation: l7 1s infinite linear alternate;
+}
+@keyframes l7 {
+  0% {
+    background-size: 20% 50%, 20% 50%, 20% 50%;
+  }
+  20% {
+    background-size: 20% 20%, 20% 50%, 20% 50%;
+  }
+  40% {
+    background-size: 20% 100%, 20% 20%, 20% 50%;
+  }
+  60% {
+    background-size: 20% 50%, 20% 100%, 20% 20%;
+  }
+  80% {
+    background-size: 20% 50%, 20% 50%, 20% 100%;
+  }
+  100% {
+    background-size: 20% 50%, 20% 50%, 20% 50%;
+  }
+}

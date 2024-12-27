@@ -30,6 +30,7 @@
     Introduced in Internet Explorer 10.
     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
   */
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -95,7 +96,8 @@ img {
 .about-me .container img {
   border: 1rem solid var(--light);
   box-shadow: 0 0 2rem var(--dark);
-  animation: bounceNia 7s ease-in-out infinite;
+  -webkit-animation: bounceNia 7s ease-in-out infinite;
+          animation: bounceNia 7s ease-in-out infinite;
 }
 .about-me .text-area {
   max-width: 30%;
@@ -111,7 +113,16 @@ img {
   font-size: 5rem;
   position: absolute;
   bottom: 5rem;
-  animation: bounce 2s ease-in-out infinite;
+  -webkit-animation: bounce 2s ease-in-out infinite;
+          animation: bounce 2s ease-in-out infinite;
+}
+@-webkit-keyframes enterNia {
+  0% {
+    transform: translate3d(-100px, 0, 0);
+  }
+  100% {
+    transform: translate3d(100px, 0, 0);
+  }
 }
 @keyframes enterNia {
   0% {
@@ -121,12 +132,28 @@ img {
     transform: translate3d(100px, 0, 0);
   }
 }
+@-webkit-keyframes bounceNia {
+  0%, 100% {
+    transform: translateY(1rem);
+  }
+  50% {
+    transform: translateY(-1rem);
+  }
+}
 @keyframes bounceNia {
   0%, 100% {
     transform: translateY(1rem);
   }
   50% {
     transform: translateY(-1rem);
+  }
+}
+@-webkit-keyframes bounce {
+  0%, 100% {
+    transform: translate(0%, 1rem); /* Starting position */
+  }
+  50% {
+    transform: translate(0%, -1rem); /* Move up */
   }
 }
 @keyframes bounce {
@@ -183,8 +210,10 @@ img {
 .voice-bank .container .characters-area, .voice-bank .container .character-expanded-area {
   background-color: var(--light);
   max-height: 100vh;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 .voice-bank .container .characters-area {
   border-radius: 2rem 0 0 2rem;
@@ -209,7 +238,19 @@ img {
   max-width: 80%;
   margin-bottom: 5rem;
   transition: 0.3s all;
-  animation: appear 0.5s linear;
+  -webkit-animation: appear 0.5s linear;
+          animation: appear 0.5s linear;
+}
+@-webkit-keyframes appear {
+  0% {
+    transform: scale(0);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 @keyframes appear {
   0% {
@@ -502,6 +543,14 @@ img {
   opacity: 0.9;
   cursor: pointer;
 }
+@-webkit-keyframes rotateAnimation {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
 @keyframes rotateAnimation {
   from {
     transform: rotateY(0deg);
@@ -692,6 +741,127 @@ footer #hello-kitty {
   margin-bottom: 4rem;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(255, 221, 254);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(rgb(255, 172, 253), rgb(163, 86, 163));
+  border-radius: 2rem;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(rgba(255, 172, 253, 0.7), rgba(163, 86, 163, 0.7));
+}
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(rgb(163, 86, 163), rgb(119, 45, 120));
+}
+
+::-moz-selection {
+  background-color: var(--primary);
+  color: var(--dark);
+}
+
+::selection {
+  background-color: var(--primary);
+  color: var(--dark);
+}
+
+::-moz-selection {
+  background-color: var(--primary);
+  color: var(--dark);
+}
+
+.intermission .container p::-moz-selection, .loading-container span::-moz-selection, .bigger-loading-container span::-moz-selection {
+  background-color: var(--primary-dark);
+  color: var(--white);
+}
+
+.intermission .container p::selection, .loading-container span::selection, .bigger-loading-container span::selection {
+  background-color: var(--primary-dark);
+  color: var(--white);
+}
+
+.bigger-loading-container {
+  position: fixed; /* Fixed position to cover the entire screen */
+  top: 0;
+  left: 0;
+  background-color: var(--light); /* Semi-transparent background */
+  z-index: 9999; /* High z-index to be on top of other elements */
+  display: none; /* Hidden by default */
+}
+
+.loading-container, .bigger-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.bigger-loading-error-msg {
+  display: none;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: darkred;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 45px;
+  aspect-ratio: 0.75;
+  --c: no-repeat linear-gradient(var(--primary-dark) 0 0);
+  background: var(--c) 0% 50%, var(--c) 50% 50%, var(--c) 100% 50%;
+  -webkit-animation: l7 1s infinite linear alternate;
+          animation: l7 1s infinite linear alternate;
+}
+
+@-webkit-keyframes l7 {
+  0% {
+    background-size: 20% 50%, 20% 50%, 20% 50%;
+  }
+  20% {
+    background-size: 20% 20%, 20% 50%, 20% 50%;
+  }
+  40% {
+    background-size: 20% 100%, 20% 20%, 20% 50%;
+  }
+  60% {
+    background-size: 20% 50%, 20% 100%, 20% 20%;
+  }
+  80% {
+    background-size: 20% 50%, 20% 50%, 20% 100%;
+  }
+  100% {
+    background-size: 20% 50%, 20% 50%, 20% 50%;
+  }
+}
+
+@keyframes l7 {
+  0% {
+    background-size: 20% 50%, 20% 50%, 20% 50%;
+  }
+  20% {
+    background-size: 20% 20%, 20% 50%, 20% 50%;
+  }
+  40% {
+    background-size: 20% 100%, 20% 20%, 20% 50%;
+  }
+  60% {
+    background-size: 20% 50%, 20% 100%, 20% 20%;
+  }
+  80% {
+    background-size: 20% 50%, 20% 50%, 20% 100%;
+  }
+  100% {
+    background-size: 20% 50%, 20% 50%, 20% 50%;
+  }
+}
 @media only screen and (max-width: 1880px) {
   .voice-bank .container .character-expanded-area .container .character .character-info .center a .character-img-container {
     width: 18rem;
@@ -988,48 +1158,4 @@ footer #hello-kitty {
   footer .container img#hello-kitty {
     width: 40%;
   }
-}
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgb(255, 221, 254);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(rgb(255, 172, 253), rgb(163, 86, 163));
-  border-radius: 2rem;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(rgba(255, 172, 253, 0.7), rgba(163, 86, 163, 0.7));
-}
-::-webkit-scrollbar-thumb:active {
-  background: linear-gradient(rgb(163, 86, 163), rgb(119, 45, 120));
-}
-
-::-moz-selection {
-  background-color: var(--primary);
-  color: var(--dark);
-}
-
-::selection {
-  background-color: var(--primary);
-  color: var(--dark);
-}
-
-::-moz-selection {
-  background-color: var(--primary);
-  color: var(--dark);
-}
-
-.intermission .container p::-moz-selection {
-  background-color: var(--primary-dark);
-  color: var(--white);
-}
-
-.intermission .container p::selection {
-  background-color: var(--primary-dark);
-  color: var(--white);
 }/*# sourceMappingURL=main.css.map */

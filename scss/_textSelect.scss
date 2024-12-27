@@ -8,7 +8,7 @@
   color: var(--dark);
 }
 
-.intermission .container p::selection {
+.intermission .container p::selection, .loading-container span::selection, .bigger-loading-container span::selection {
   background-color: var(--primary-dark);
   color: var(--white);
 }

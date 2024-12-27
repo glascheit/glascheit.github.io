@@ -60,6 +60,11 @@
     />
   </head>
   <body>
+    <div class="bigger-loading-container" id="bigger-loading-container">
+      <div class="loader" id="bigger-loader"></div>
+      <span class="alexandria bigger-loading-error-msg">Ocorreu um erro!</span>
+      <span class="alexandria bigger-loading-error-msg">Tente novamente mais tarde. ╥﹏╥</span>
+    </div>
     <div class="bg-wrap"></div>
     <nav>
       <div class="nav-bar">
@@ -143,7 +148,11 @@
     </div>
     <div class="voice-bank" id="voice-bank">
       <div class="container">
-        <div class="characters-area" id="characters-area"></div>
+        <div class="characters-area" id="characters-area">
+          <div class="loading-container" id="loading-container">
+            <div class="loader" id="loader"></div>
+          </div>
+        </div>
         <div
           class="character-expanded-area display-none"
           id="character-expanded-area"
