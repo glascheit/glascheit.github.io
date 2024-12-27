@@ -900,6 +900,12 @@ footer #hello-kitty {
   .intermission .container p {
     max-width: 60%;
   }
+  footer .container {
+    width: 100%;
+  }
+  footer .container .discord {
+    width: 100%;
+  }
 }
 @media screen and (max-width: 1350px) {
   .about-me .container .text-area h1 {
@@ -907,12 +913,6 @@ footer #hello-kitty {
   }
   .about-me .container .text-area p {
     font-size: 1.5rem;
-  }
-  footer .container {
-    width: 100%;
-  }
-  footer .container .discord {
-    width: 100%;
   }
 }
 @media screen and (max-width: 1169px) {
@@ -946,6 +946,30 @@ footer #hello-kitty {
 @media screen and (max-width: 1007px) {
   .intermission .container p {
     max-width: 80%;
+  }
+  footer .container .discord .image-area {
+    max-width: 35%;
+  }
+  footer .container .discord .image-area img {
+    margin-right: 3rem;
+  }
+  footer .container .discord .text-area .discord-cta {
+    font-size: 2.5rem;
+  }
+  footer .container .discord .text-area .discord-brand {
+    font-size: 5.5rem;
+  }
+}
+@media (min-width: 951px) and (max-height: 657px) {
+  nav {
+    height: 10vh;
+  }
+  .about-me {
+    padding-top: 2vh;
+  }
+  .about-me h1.lobster {
+    margin-bottom: 2rem;
+    font-size: 8rem;
   }
 }
 @media screen and (max-width: 950px) {
@@ -1051,18 +1075,6 @@ footer #hello-kitty {
   }
   .voice-bank .container .character-expanded-area .container .character .character-info .character-audio-area button {
     margin-bottom: 5rem;
-  }
-  footer .container .discord .image-area {
-    max-width: 35%;
-  }
-  footer .container .discord .image-area img {
-    margin-right: 3rem;
-  }
-  footer .container .discord .text-area .discord-cta {
-    font-size: 2.5rem;
-  }
-  footer .container .discord .text-area .discord-brand {
-    font-size: 5.5rem;
   }
 }
 @media screen and (max-width: 936px) {
